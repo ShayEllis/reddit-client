@@ -1,9 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import navbarSlice from '../app/features/navbar/navbarSlice'
+import { configureStore } from "@reduxjs/toolkit"
+import searchbarSlice from "../app/features/searchbar/searchbarSlice"
 
 export default configureStore({
     reducer: {
-        navBar: navbarSlice
+        searchbar: searchbarSlice
     }
 })
 

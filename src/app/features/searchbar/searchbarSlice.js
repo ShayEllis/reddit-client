@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {}
 
-const navbarSlice = createSlice({
-    name: 'navbar',
+const searchbarSlice = createSlice({
+    name: 'searchbar',
     initialState: initialState,
     reducers: {
 
     }
 })
 
-export default navbarSlice.reducer
+export default searchbarSlice.reducer

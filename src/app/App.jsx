@@ -1,7 +1,12 @@
 import './App.css'
+import Navbar from './components/navbar/Navbar'
 
-function App() {
-  return <h1>My Reddit Client!!!</h1>
+function App () {
+  return (
+    <section>
+      <Navbar />
+    </section>
+  )
 }
 
 export default App
