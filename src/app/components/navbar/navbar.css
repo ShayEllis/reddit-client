@@ -1,0 +1,19 @@
+#top-nav {
+    display: flex;
+    width: 100%;
+    background-color: gray;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#top-nav-logo {
+    display: flex;
+    height: 3rem;
+}
+
+#top-nav-logo h1 {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    width: auto;
+}
