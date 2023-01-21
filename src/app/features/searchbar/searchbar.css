@@ -5,15 +5,17 @@
 #searchbar {
     position: relative;
     border-radius: 20px;
-    border: none;
     height: 34px;
-    width: 80px;
     transition-duration: 0.5s;
 }
-#searchbar:focus {
+.searchbar-inactive {
+    width: 80px;
+    border: none;
+}
+.searchbar-active {
     outline: none;
     width: 300px;
-    border: none;
+    border: 2px solid black;
 }
 #searchbar::-webkit-textfield-decoration-container {
     padding: 0 31px 0 10px;
