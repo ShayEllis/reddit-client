@@ -6,15 +6,18 @@
     justify-content: space-between;
     align-items: center;
 }
-
-#top-nav-logo {
-    display: flex;
-    height: 3rem;
-}
-
-#top-nav-logo h1 {
+#top-nav-logo-container {
     display: flex;
     align-items: center;
+    padding: 5px 0;
+}
+#top-nav-logo-container svg {
+    height: 48px;
+    padding: 0px 10px 0 0;
+}
+#top-nav-logo-container h1 {
+    display: flex;
+
     white-space: nowrap;
     width: auto;
 }
