@@ -10,7 +10,12 @@ import store from './store'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />
+    element: <App />,
+    children: [
+      {
+        
+      }
+    ]
   }
 ])
 

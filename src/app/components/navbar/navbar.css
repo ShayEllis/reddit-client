@@ -1,4 +1,6 @@
 #top-nav {
+    position: fixed;
+    top: 0;
     display: flex;
     padding: 0 50px 0 50px;
     width: 100%;
@@ -17,7 +19,6 @@
 }
 #top-nav-logo-container h1 {
     display: flex;
-
     white-space: nowrap;
     width: auto;
 }
