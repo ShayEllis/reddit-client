@@ -1,6 +1,12 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+:root {
+    --dark-main-bg-color:#000;
+    --dark-side-bar-buttons: #2e2e2e;
+    --dark-main-text: #FFF
+    
+}
 ::selection {
     background-color: lightsalmon;
 }
@@ -9,15 +15,21 @@ button:hover {
 }
 html {
     height: 100%;
+    color: var(--dark-main-text)
 }
 body {
     position: relative;
     top: 58px;
-    height: calc(100% - 58px)
+    height: calc(100% - 58px);
+    background-color: var(--dark-main-bg-color);
 }
 #root {
     display: flex;
     height: 100%;
     width: 100%;
     justify-content: space-between;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+
 }

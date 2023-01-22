@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     display: flex;
-    padding: 0 50px 0 50px;
+    padding: 0 50px 0 10px;
     width: 100%;
     background-color: gray;
     justify-content: space-between;
@@ -13,9 +13,31 @@
     align-items: center;
     padding: 5px 0;
 }
-#top-nav-logo-container svg {
+#toggle-theme {
+
+}
+#toggle-theme a {
+    display: block;
+}
+#top-nav-logo {
     height: 48px;
     padding: 0px 10px 0 0;
+}
+#top-nav-logo circle {
+    fill: #000;
+}
+@media screen and (prefers-color-scheme: light) {
+    #top-nav-logo circle {
+        fill: #FFF;
+    }
+}
+#top-nav-logo path {
+    fill: #FFF;
+}
+@media screen and (prefers-color-scheme: light) {
+    #top-nav-logo path {
+        fill: #000;
+    }
 }
 #top-nav-logo-container h1 {
     display: flex;
