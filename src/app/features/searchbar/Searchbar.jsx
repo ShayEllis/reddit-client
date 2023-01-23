@@ -1,7 +1,7 @@
 import './searchbar.css'
 
 const Searchbar = () => {
-
+    
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(event.target[0].value) // may not need if auto searching as you type

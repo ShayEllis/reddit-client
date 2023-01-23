@@ -1,4 +1,5 @@
 // Function to generate a unique random ID for lists
+// Generate random ID's for lists
 const randomID = () => {
     return Math.floor(Date.now() * Math.random() * 100)
 }
@@ -8,5 +9,5 @@ const detectTheme = () => {
     window.matchMedia('(prefers-color-scheme: dark)')
 }
 
-export { randomID }
+export { randomID, detectTheme }
 

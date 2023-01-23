@@ -1,3 +1,4 @@
+/* Board main container */
 #board-container {
     display: flex;
     flex-wrap: wrap;
@@ -8,6 +9,8 @@
     width: 100%;
     overflow: scroll;
 }
+
+/* Board container */
 .post-container {
     display: flex;
     flex-direction: column;
@@ -17,6 +20,8 @@
     background-color: lightgrey;
     border: 1px solid black;
 }
+
+/* Top of board, header */
 #post-header {
     width: 100%;
     flex-shrink: 0;
@@ -24,11 +29,15 @@
     height: 30px;
     background-color: lightblue;
 }
+
+/* Center of board, content */
 #post-content {
     width: 100%;
     height: 100%;
     background-color:lightgreen;
 }
+
+/* Bottom of board, footer */
 #post-footer {
     width: 100%;
     flex-shrink: 0;

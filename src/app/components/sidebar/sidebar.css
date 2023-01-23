@@ -1,14 +1,19 @@
+/* Sidebar container */
 #sidebar-container {
     flex-shrink: 0;
     overflow: scroll;
     width: 200px;
     height: 100%;
 }
+
+/* List container */
 #sidebar-list-container {
     width: 100%;
     padding: 15px;
 
 }
+
+/* List items */
 .sidebar-item {
     margin: 10px 0;
     background-color:var(--dark-side-bar-buttons);

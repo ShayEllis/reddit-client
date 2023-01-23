@@ -1,9 +1,13 @@
+/* Use border-box model */
 *, *::before, *::after {
     box-sizing: border-box;
 }
+/* App color themes */
 :root {
     --dark-main-bg-color:#000;
     --dark-top-bar: #4A4A4A;
+    --dark-theme-hover: #109FFF;
+    --dark-theme-hover-bg: #2e2e2e;
     --dark-search-button: #FFF;
     --dark-side-bar-buttons: #2e2e2e;
     --dark-side-bar-buttons-hover: #4A4A4A;
@@ -12,6 +16,8 @@
     --dark-selection-background: #8CD867;
     --dark-selection-text: #000;
 }
+
+/* General page styles */
 ::selection {
     background-color: lightsalmon;
 }
