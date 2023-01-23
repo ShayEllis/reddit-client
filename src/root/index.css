@@ -3,19 +3,35 @@
 }
 :root {
     --dark-main-bg-color:#000;
+    --dark-top-bar: #4A4A4A;
+    --dark-search-button: #FFF;
     --dark-side-bar-buttons: #2e2e2e;
-    --dark-main-text: #FFF
-    
+    --dark-side-bar-buttons-hover: #4A4A4A;
+    --dark-main-text: #FFF;
+    --dark-title-text: #109FFF;
+    --dark-selection-background: #8CD867;
+    --dark-selection-text: #000;
 }
 ::selection {
     background-color: lightsalmon;
+}
+@media screen and (prefers-color-scheme: dark) {
+    ::selection {
+        background-color: var(--dark-selection-background);
+        color: var(--dark-selection-text);
+    }
 }
 button:hover {
     cursor: pointer;
 }
 html {
     height: 100%;
-    color: var(--dark-main-text)
+    color: #000;
+}
+@media screen and (prefers-color-scheme: dark) {
+    html {
+        color: var(--dark-main-text)
+    }
 }
 body {
     position: relative;
@@ -28,8 +44,4 @@ body {
     height: 100%;
     width: 100%;
     justify-content: space-between;
-}
-
-@media screen and (prefers-color-scheme: dark) {
-
 }

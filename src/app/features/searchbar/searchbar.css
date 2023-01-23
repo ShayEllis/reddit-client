@@ -2,8 +2,14 @@
     position: relative;
     display: flex;
 }
+@media screen and (max-width: 575px) {
+    #search-container {
+        margin-bottom: 12px;
+    }
+}
 #searchbar {
     position: relative;
+    border: 2px solid black;
     border-radius: 20px;
     height: 34px;
     transition-duration: 0.5s;
@@ -15,7 +21,6 @@
 .searchbar-active {
     outline: none;
     width: 300px;
-    border: 2px solid black;
 }
 #searchbar::-webkit-textfield-decoration-container {
     padding: 0 31px 0 10px;
@@ -42,6 +47,7 @@
 }
 #search-button svg {
     display: block;
+    fill: var(--dark-search-button);
     width: 20px;
     height: 20px;
     margin: 4px;

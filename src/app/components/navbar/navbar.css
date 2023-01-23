@@ -2,26 +2,34 @@
     position: fixed;
     top: 0;
     display: flex;
-    padding: 0 50px 0 10px;
+    flex-wrap: wrap;
+    padding: 0 10px;
     width: 100%;
-    background-color: gray;
+    background-color: var(--dark-top-bar);
     justify-content: space-between;
     align-items: center;
 }
+@media screen and (max-width: 575px) {
+    #top-nav {
+        flex-direction: column;
+    }
+}
+#top-nav h1 {
+    color: var(--dark-title-text)
+}
 #top-nav-logo-container {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     padding: 5px 0;
 }
 #toggle-theme {
-
-}
-#toggle-theme a {
-    display: block;
+    background-color: transparent;
+    border: none;
 }
 #top-nav-logo {
     height: 48px;
-    padding: 0px 10px 0 0;
+    padding: 0px 10px;
 }
 #top-nav-logo circle {
     fill: #000;
