@@ -1,4 +1,5 @@
 import './post.css'
+import chatIcon from '../../../assets/chat-icon-64px.png'
 
 const Post = () => {
     return (
@@ -14,7 +15,7 @@ const Post = () => {
             <menu id='post-footer'>
                 <li className='footer-link'>
                     <a>
-                        <img src='/src/assets/chat-icon-64px.png' alt='comment icon' />
+                        <img src={chatIcon} alt='comment icon' />
                         <span>{'Num'} Comments</span> {/* Add current number of comments */}
                     </a>
                 </li>
