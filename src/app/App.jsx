@@ -1,4 +1,4 @@
-import './App.css'
+import './app.css'
 import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/sidebar/sidebar'
 import Board from './components/board/board'

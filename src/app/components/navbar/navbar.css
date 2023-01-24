@@ -67,7 +67,7 @@
     margin: 5px 0;
 }
 #top-nav-logo circle {
-    fill: #000;
+    fill: var(--dark-logo-bg);
 }
 @media screen and (prefers-color-scheme: light) {
     #top-nav-logo circle {
@@ -75,7 +75,7 @@
     }
 }
 #top-nav-logo path {
-    fill: #FFF;
+    fill: var(--dark-logo);
 }
 @media screen and (prefers-color-scheme: light) {
     #top-nav-logo path {

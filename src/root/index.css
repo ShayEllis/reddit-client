@@ -6,15 +6,19 @@
 :root {
     --dark-main-bg-color:#000;
     --dark-top-bar: #4A4A4A;
+    --dark-logo-bg: #000;
+    --dark-logo: #cbcbcb;
     --dark-theme-hover: #109FFF;
     --dark-theme-hover-bg: #2e2e2e;
     --dark-search-button: #FFF;
     --dark-side-bar-buttons: #2e2e2e;
     --dark-side-bar-buttons-hover: #4A4A4A;
-    --dark-main-text: #FFF;
+    --dark-main-text: #cbcbcb;
     --dark-title-text: #109FFF;
     --dark-selection-background: #8CD867;
     --dark-selection-text: #000;
+    --dark-post-bg:#2e2e2e;
+    --dark-post-buttons-hover: #4A4A4A;
 }
 
 /* General page styles */
@@ -26,6 +30,9 @@
         background-color: var(--dark-selection-background);
         color: var(--dark-selection-text);
     }
+}
+button {
+    color: var(--dark-main-text);
 }
 button:hover {
     cursor: pointer;
