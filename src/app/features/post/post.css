@@ -27,9 +27,21 @@
 
 /* Bottom of footer, footer */
 #post-footer {
+    display: flex;
+    align-items: center;
     width: 100%;
     flex-shrink: 0;
     border-radius: 0 0 10px 10px;
-    height: 30px;
-    background-color: lightsteelblue;
+    height: 40px;
+    background-color: darkgray;
+}
+.footer-link {
+
+}
+.footer-link a {
+    display: inline-block;
+}
+.footer-link img {
+    height: 26px;
+    filter: brightness(0) saturate(100%);
 }
