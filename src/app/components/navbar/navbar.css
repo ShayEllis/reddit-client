@@ -51,10 +51,7 @@
     color: var(--dark-theme-hover);
     background-color: var(--dark-theme-hover-bg);
 }
-#toggle-theme:focus {
-    border: 1px solid white;
-}
-#toggle-theme:focus + #dropdown-options {
+#theme-dropdown:hover #dropdown-options {
     display: block;
 }
 
