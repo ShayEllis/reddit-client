@@ -4,6 +4,12 @@
     overflow: scroll;
     width: 200px;
     height: 100%;
+    transition-duration: 0.75s;
+}
+@media screen and (max-width: 575px) {
+    #sidebar-container {
+        width: 0;
+    }
 }
 
 /* List container */
