@@ -13,6 +13,8 @@
 #searchbar {
     position: relative;
     border: 2px solid black;
+    background-color: var(--dark-search-bg);
+    color: var(--dark-main-text);
     border-radius: 20px;
     height: 34px;
     transition-duration: 0.5s;
@@ -50,7 +52,7 @@
 }
 #search-button svg {
     display: block;
-    fill: var(--dark-search-button);
+    fill: var(--dark-main-text);
     width: 20px;
     height: 20px;
     margin: 4px;

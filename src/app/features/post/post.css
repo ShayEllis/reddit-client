@@ -5,10 +5,10 @@
     width: 500px;
     height: 500px;
     border-radius: 10px;
-    background-color: var(--dark-post-bg);
+    background-color: var(--dark-content-bg);
 }
 .post-container a:hover {
-    background-color: var(--dark-post-buttons-hover);
+    background-color: var(--dark-hover-bg);
     cursor: pointer;
 }
 .post-container img {
@@ -34,7 +34,7 @@
 }
 .up-arrow img {
     filter: brightness(85%);
-    content: url('../../../assets/post/up-down-arrow-512px-white.png');
+    content: url('../../../assets/post/up-down-arrow-512px-white.png'); /* different PNG for dark theme */
 }
 .up-arrow:hover img {
     content: url('../../../assets/post/up-down-arrow-512px-red.png')
@@ -50,7 +50,7 @@
 }
 .down-arrow img {
     filter: brightness(85%);
-    content: url('../../../assets/post/up-down-arrow-512px-white.png');
+    content: url('../../../assets/post/up-down-arrow-512px-white.png'); /* different PNG for dark theme */
 }
 .down-arrow:hover img {
     content: url('../../../assets/post/up-down-arrow-512px-blue.png')
@@ -84,15 +84,15 @@
 }
 .comment-button-container img {
     filter: brightness(85%);
-    content: url('../../../assets/post/comment-icon-512px-white.png')
+    content: url('../../../assets/post/comment-icon-512px-white.png') /* different PNG for dark theme */
 }
 .share-button-container img {
     filter: brightness(85%);
-    content: url('../../../assets/post/share-icon-512px-white.png')
+    content: url('../../../assets/post/share-icon-512px-white.png') /* different PNG for dark theme */
 }
 .save-button-container img {
     filter: brightness(85%);
-    content: url('../../../assets/post/save-icon-512px-white.png')
+    content: url('../../../assets/post/save-icon-512px-white.png') /* different PNG for dark theme */
 }
 .footer-link span {
     margin-left: 5px;

@@ -7,7 +7,7 @@
     padding: 0 10px;
     width: 100%;
     min-width: 400px;
-    background-color: var(--dark-top-bar);
+    background-color: var(--dark-content-bg);
     justify-content: space-between;
     align-items: center;
     z-index: 999;
@@ -32,7 +32,7 @@
     height: 30px;
     width: 55px;
     border-radius: 3px;
-    border: 1px solid white;
+    border: 1px solid var(--dark-theme-border);
 }
 @media screen and (max-width: 575px) {
     #toggle-theme {
@@ -49,17 +49,17 @@
     z-index: 999;
 }
 #dropdown-options a {
-    background-color: var(--dark-top-bar);
+    background-color: var(--dark-buttons);
     display: block;
     padding: 10px;
 }
 #dropdown-options a:hover {
     cursor: pointer;
-    background-color: var(--dark-theme-hover-bg);
+    background-color: var(--dark-hover-bg);
 }
 #toggle-theme:hover {
-    color: var(--dark-theme-hover);
-    background-color: var(--dark-theme-hover-bg);
+    color: var(--dark-title-text);
+    background-color: var(--dark-hover-bg);
 }
 #theme-dropdown:hover #dropdown-options {
     display: block;
@@ -90,18 +90,8 @@
 #top-nav-logo circle {
     fill: var(--dark-logo-bg);
 }
-@media screen and (prefers-color-scheme: light) {
-    #top-nav-logo circle {
-        fill: #FFF;
-    }
-}
 #top-nav-logo path {
     fill: var(--dark-logo);
-}
-@media screen and (prefers-color-scheme: light) {
-    #top-nav-logo path {
-        fill: #000;
-    }
 }
 #top-nav-logo-container h1 {
     display: inline-block;

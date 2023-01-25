@@ -1,7 +1,32 @@
+import { useEffect } from 'react'
 import Searchbar from '../../features/searchbar/Searchbar'
 import './navbar.css'
 
 function Navbar () {
+    useEffect(() => {
+        /*
+        1. check if theme is stored in localStorage
+            - if not set to current system stetting
+            - if it is use localStorage theme
+        2. if button is clicked override and change theme
+        3. clear localStorage when app is closed?
+        */
+        function detectSystemThemeChange (event) {
+            const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            localStorage.setItem('current-theme', currentTheme)
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemThemeChange)
+
+        function handlePageLoad (event) {
+            const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            console.log(currentTheme)
+            console.log(localStorage.getItem('current-theme'))
+
+            console.log(event)
+        }
+        window.addEventListener('load', handlePageLoad)
+    })
+
     return (
         <header id='top-nav'>
             <div id='top-nav-logo-container'>
