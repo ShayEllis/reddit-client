@@ -31,9 +31,6 @@
         color: var(--dark-selection-text);
     }
 }
-#root {
-
-}
 button {
     color: var(--dark-main-text);
 }
