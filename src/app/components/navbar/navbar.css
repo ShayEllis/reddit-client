@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     padding: 0 10px;
     width: 100%;
+    min-width: 400px;
     background-color: var(--dark-top-bar);
     justify-content: space-between;
     align-items: center;

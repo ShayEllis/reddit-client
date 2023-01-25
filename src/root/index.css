@@ -31,6 +31,9 @@
         color: var(--dark-selection-text);
     }
 }
+#root {
+
+}
 button {
     color: var(--dark-main-text);
 }
@@ -49,6 +52,7 @@ html {
 body {
     position: relative;
     top: 58px;
+    min-width: 400px;
     height: calc(100% - 58px);
     background-color: var(--dark-main-bg-color);
 }

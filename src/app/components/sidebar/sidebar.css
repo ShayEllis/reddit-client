@@ -1,5 +1,5 @@
 /* Sidebar container */
-#sidebar-container {
+.sidebar-container {
     flex-shrink: 0;
     overflow: scroll;
     width: 200px;
@@ -7,16 +7,57 @@
     transition-duration: 0.75s;
 }
 @media screen and (max-width: 575px) {
-    #sidebar-container {
+    .sidebar-container {
         width: 0;
     }
+}
+.sidebar-is-closed {
+    width: 0;
+}
+.sidebar-is-open {
+    width: 200px;
+}
+.open-close-sidebar-button {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border: 1px solid black;
+    background-color: transparent;
+    transition-duration: inherit;
+    padding: 0;
+    width: 15px;
+    height: 36px;
+    top: calc(50% - 29px);
+    left: 185px;
+    transform: rotate(180deg);
+    filter: invert(90%) sepia(0%) saturate(1691%) hue-rotate(168deg) brightness(97%) contrast(81%);
+}
+@media screen and (max-width: 575px) {
+    .open-close-sidebar-button {
+        left: 0;
+        transform: rotate(0deg);
+    }
+}
+.open-close-sidebar-button img {
+    max-width: 15px;
+    height: 36px;
+    padding: 8px 0;
+    top: calc(50% - 29px);
+}
+.button-is-rotated {
+    transform: rotate(0deg);
+    left: 0;
+}
+.button-not-rotated {
+    transform: rotate(180deg);
+    left: 185px;
 }
 
 /* List container */
 #sidebar-list-container {
     width: 100%;
     padding: 15px;
-
+    width: auto;
 }
 
 /* List items */
