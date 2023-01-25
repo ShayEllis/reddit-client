@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import './sidebar.css'
-import sidebarButton from '../../../assets/side-bar-arrow.png'
 
 const Sidebar = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -47,7 +46,7 @@ const Sidebar = () => {
     return (
         <aside className='sidebar-container' > {/* Add button to open sidebar when window width is below 575px */}
             <button className='open-close-sidebar-button' onClick={handleSidebarButtonClick}>
-                <img src={sidebarButton} alt='open/close sidebar' />
+                <img alt='open/close sidebar' />
             </button>
             <ul id='sidebar-list-container'>
                 <li className='sidebar-item'><a>Best</a></li> {/* Add images next to each link? */}

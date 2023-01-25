@@ -13,7 +13,6 @@
 }
 .post-container img {
     height: 26px;
-    filter: invert(90%) sepia(0%) saturate(1691%) hue-rotate(168deg) brightness(97%) contrast(81%);
 }
 
 /* Top of post, header */
@@ -25,14 +24,19 @@
     border-radius: 10px 10px 0 0;
     height: 40px;
     border-bottom: 1px solid black;
+    overflow: hidden;
 }
 #vote-container {
     display: flex;
     align-items: center;
     height: 100%;
 }
+.up-arrow img {
+    filter: brightness(85%);
+    content: url('../../../assets/post/up-down-arrow-512px-white.png');
+}
 .up-arrow:hover img {
-    filter: invert(29%) sepia(88%) saturate(6437%) hue-rotate(23deg) brightness(97%) contrast(102%);
+    content: url('../../../assets/post/up-down-arrow-512px-red.png')
 }
 #vote-container a {
     display: flex;
@@ -43,8 +47,12 @@
 .down-arrow {
     transform: rotate(180deg);
 }
+.down-arrow img {
+    filter: brightness(85%);
+    content: url('../../../assets/post/up-down-arrow-512px-white.png');
+}
 .down-arrow:hover img {
-    filter: invert(51%) sepia(56%) saturate(538%) hue-rotate(189deg) brightness(81%) contrast(96%);
+    content: url('../../../assets/post/up-down-arrow-512px-blue.png')
 }
 
 /* Center of post, content */
@@ -62,6 +70,7 @@
     border-radius: 0 0 10px 10px;
     height: 40px;
     border-top: 1px solid black;
+    overflow: hidden;
 }
 .footer-link {
     height: 100%;
@@ -71,6 +80,18 @@
     align-items: center;
     padding: 0 10px;
     height: 100%;
+}
+.comment-button-container img {
+    filter: brightness(85%);
+    content: url('../../../assets/post/comment-icon-512px-white.png')
+}
+.share-button-container img {
+    filter: brightness(85%);
+    content: url('../../../assets/post/share-icon-512px-white.png')
+}
+.save-button-container img {
+    filter: brightness(85%);
+    content: url('../../../assets/post/save-icon-512px-white.png')
 }
 .footer-link span {
     margin-left: 5px;

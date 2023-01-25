@@ -1,8 +1,8 @@
 import './post.css'
-import chatIcon from '../../../assets/comment-icon-512px.png'
-import shareIcon from '../../../assets/share-icon-512px.png'
-import saveIcon from '../../../assets/save-icon-512px.png'
-import voteArrow from '../../../assets/up-down-arrow-512px.png'
+import lightChatIcon from '../../../assets/post/comment-icon-512px-black.png'
+import lightShareIcon from '../../../assets/post/share-icon-512px-black.png'
+import lightSaveIcon from '../../../assets/post/save-icon-512px-black.png'
+
 
 const Post = () => {
     return (
@@ -10,11 +10,11 @@ const Post = () => {
             <div id='post-header'>
                 <div id='vote-container'>
                     <a className='up-arrow' >
-                        <img  src={voteArrow} alt='up vote arrow' />
+                        <img alt='up vote arrow' />
                     </a>
                     <span>{53}</span>    {/* replace with number from Reddit API */}
                     <a className='down-arrow' >
-                        <img src={voteArrow} alt='down vote arrow' />
+                        <img alt='down vote arrow' />
                     </a >
                 </div>
             </div>
@@ -22,21 +22,21 @@ const Post = () => {
 
             </div>
             <menu id='post-footer'>
-                <li className='footer-link'>
+                <li className='footer-link comment-button-container'>
                     <a>
-                        <img src={chatIcon} alt='comment icon' />
+                        <img alt='comment icon' />
                         <span>{156} Comments</span> {/* Add current number of comments */}
                     </a>
                 </li>
-                <li className='footer-link'>
+                <li className='footer-link share-button-container'>
                     <a>
-                        <img src={shareIcon} alt='share icon' />
+                        <img alt='share icon' />
                         <span>Share</span>
                     </a>
                 </li>
-                <li className='footer-link'>
+                <li className='footer-link save-button-container'>
                     <a>
-                        <img src={saveIcon} alt='saveIcon' />
+                        <img alt='saveIcon' />
                         <span>Save</span>
                     </a>
                 </li>

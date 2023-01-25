@@ -17,11 +17,13 @@
 .sidebar-is-open {
     width: 200px;
 }
+
+/* Sidebar open/close button */
 .open-close-sidebar-button {
     display: flex;
     align-items: center;
     position: absolute;
-    border: 1px solid black;
+    border: 1px solid white;
     background-color: transparent;
     transition-duration: inherit;
     padding: 0;
@@ -30,7 +32,6 @@
     top: calc(50% - 29px);
     left: 185px;
     transform: rotate(180deg);
-    filter: invert(90%) sepia(0%) saturate(1691%) hue-rotate(168deg) brightness(97%) contrast(81%);
 }
 @media screen and (max-width: 575px) {
     .open-close-sidebar-button {
@@ -39,6 +40,7 @@
     }
 }
 .open-close-sidebar-button img {
+    content: url('../../../assets/sidebar/side-bar-arrow-white.png');
     max-width: 15px;
     height: 36px;
     padding: 8px 0;
