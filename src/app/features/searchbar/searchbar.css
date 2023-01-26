@@ -13,11 +13,17 @@
 #searchbar {
     position: relative;
     border: 2px solid black;
-    background-color: var(--dark-search-bg);
-    color: var(--dark-main-text);
     border-radius: 20px;
     height: 34px;
     transition-duration: 0.5s;
+}
+.searchbar-light {
+    background-color: var(--light-search-bg);
+    color: var(--light-main-text);
+}
+.searchbar-dark {
+    background-color: var(--dark-search-bg);
+    color: var(--dark-main-text);
 }
 .searchbar-inactive {
     width: 80px;
@@ -52,8 +58,13 @@
 }
 #search-button svg {
     display: block;
-    fill: var(--dark-main-text);
     width: 20px;
     height: 20px;
     margin: 4px;
+}
+.svg-dark {
+    fill: var(--dark-main-text);
+}
+.svg-light {
+    fill: var(--light-main-text);
 }

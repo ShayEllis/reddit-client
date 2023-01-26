@@ -5,9 +5,18 @@
     width: 500px;
     height: 500px;
     border-radius: 10px;
+}
+.post-container-light {
+    background-color: var(--light-content-bg);
+}
+.post-container-light a:hover {
+    background-color: var(--light-hover-bg);
+    cursor: pointer;
+}
+.post-container-dark {
     background-color: var(--dark-content-bg);
 }
-.post-container a:hover {
+.post-container-dark:hover {
     background-color: var(--dark-hover-bg);
     cursor: pointer;
 }

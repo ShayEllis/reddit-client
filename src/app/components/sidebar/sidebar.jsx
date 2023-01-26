@@ -49,10 +49,10 @@ const Sidebar = () => {
                 <img alt='open/close sidebar' />
             </button>
             <ul id='sidebar-list-container'>
-                <li className='sidebar-item'><a>Best</a></li> {/* Add images next to each link? */}
-                <li className='sidebar-item'><a>Hot</a></li> {/* Generate these with reddit API */}
-                <li className='sidebar-item'><a>New</a></li>
-                <li className='sidebar-item'><a>Top</a></li>
+                <li><a className='sidebar-item'>Best</a></li> {/* Add images next to each link? */}
+                <li><a className='sidebar-item'>Hot</a></li> {/* Generate these with reddit API */}
+                <li><a className='sidebar-item'>New</a></li>
+                <li><a className='sidebar-item'>Top</a></li>
             </ul>
         </aside>
     )

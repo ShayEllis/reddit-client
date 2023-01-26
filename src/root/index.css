@@ -4,15 +4,13 @@
 }
 /* App color themes */
 :root {
+    /* Colors that dont change */
     --dark-logo-bg: #000;
     --dark-logo: #007fd4;
     --dark-title-text: #007fd4;
     --dark-selection-background: #7ac5f7;
     --dark-selection-text: #000;
-
-
-        /* DARK THEME */
-
+    /* Dark theme */
     --dark-content-bg: #2e2e2e;
     --dark-main-bg-color:#000;
     --dark-buttons: #2e2e2e;
@@ -20,19 +18,14 @@
     --dark-main-text: #cbcbcb;
     --dark-theme-border: #FFF;
     --dark-search-bg: #4A4A4A;
-    
-
-
-
-        /* LIGHT THEME */
-
-    /* --dark-content-bg: #FFF;
-    --dark-main-bg-color:#eeeeee;
-    --dark-buttons: #FFF;
-    --dark-hover-bg: #eeeeee;
-    --dark-main-text: #2e2e2e;
-    --dark-theme-border: #000;
-    --dark-search-bg: #dadada; */
+    /* Light theme */
+    --light-content-bg: #FFF;
+    --light-main-bg-color:#eeeeee;
+    --light-buttons: #FFF;
+    --light-hover-bg: #eeeeee;
+    --light-main-text: #2e2e2e;
+    --light-theme-border: #000;
+    --light-search-bg: #dadada;
 }
 
 /* General page styles */

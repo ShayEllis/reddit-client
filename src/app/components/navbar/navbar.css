@@ -7,10 +7,15 @@
     padding: 0 10px;
     width: 100%;
     min-width: 400px;
-    background-color: var(--dark-content-bg);
     justify-content: space-between;
     align-items: center;
     z-index: 999;
+}
+.top-nav-light {
+    background-color: var(--light-content-bg);
+}
+.top-name-dark {
+    background-color: var(--dark-content-bg);
 }
 @media screen and (max-width: 575px) {
     #top-nav {
@@ -32,7 +37,20 @@
     height: 30px;
     width: 55px;
     border-radius: 3px;
+}
+.toggle-theme-light {
+    border: 1px solid var(--light-theme-border);
+}
+#toggle-theme-light:hover {
+    color: var(--light-title-text);
+    background-color: var(--light-hover-bg);
+}
+.toggle-theme-dark {
     border: 1px solid var(--dark-theme-border);
+}
+#toggle-theme-dark:hover {
+    color: var(--dark-title-text);
+    background-color: var(--dark-hover-bg);
 }
 @media screen and (max-width: 575px) {
     #toggle-theme {
@@ -48,19 +66,24 @@
     text-align: center;
     z-index: 999;
 }
-#dropdown-options a {
-    background-color: var(--dark-buttons);
+.dropdown-options-button {
     display: block;
     padding: 10px;
-}
-#dropdown-options a:hover {
     cursor: pointer;
+}
+.dropdown-options-button-light {
+    background-color: var(--light-buttons);
+}
+.dropdown-options-button-light:hover {
+    background-color: var(--light-hover-bg);
+}
+.dropdown-options-button-dark {
+    background-color: var(--dark-buttons);
+}
+.dropdown-options-button-dark:hover {
     background-color: var(--dark-hover-bg);
 }
-#toggle-theme:hover {
-    color: var(--dark-title-text);
-    background-color: var(--dark-hover-bg);
-}
+
 #theme-dropdown:hover #dropdown-options {
     display: block;
 }
@@ -87,14 +110,25 @@
     padding: 0 10px 0 0;
     margin: 5px 0;
 }
-#top-nav-logo circle {
+.logo-background-light {
     fill: var(--dark-logo-bg);
 }
-#top-nav-logo path {
+.logo-background-dark {
+    fill: var(--dark-logo-bg);
+}
+.logo-image-light {
+    fill: var(--dark-logo);
+}
+.logo-image-dark {
     fill: var(--dark-logo);
 }
 #top-nav-logo-container h1 {
     display: inline-block;
-    color: var(--dark-title-text);
     white-space: nowrap;
+}
+.top-nav-h1-light {
+    color: var(--light-title-text);
+}
+.top-nav-h1-dark {
+    color: var(--dark-title-text);
 }
