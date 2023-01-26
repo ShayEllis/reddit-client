@@ -2,39 +2,53 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+
 /* App color themes */
 :root {
-    /* Colors that dont change */
-    --dark-logo-bg: #000;
-    --dark-logo: #007fd4;
-    --dark-title-text: #007fd4;
-    --dark-selection-background: #7ac5f7;
-    --dark-selection-text: #000;
-    /* Dark theme */
-    --dark-content-bg: #2e2e2e;
-    --dark-main-bg-color:#000;
-    --dark-buttons: #2e2e2e;
-    --dark-hover-bg: #4A4A4A;
-    --dark-main-text: #cbcbcb;
-    --dark-theme-border: #FFF;
-    --dark-search-bg: #4A4A4A;
-    /* Light theme */
-    --light-content-bg: #FFF;
-    --light-main-bg-color:#eeeeee;
-    --light-buttons: #FFF;
-    --light-hover-bg: #eeeeee;
-    --light-main-text: #2e2e2e;
-    --light-theme-border: #000;
-    --light-search-bg: #dadada;
+    --logo-bg: #000;
+    --logo: #007fd4;
+    --title-text: #007fd4;
+    --selection-background: #7ac5f7;
+    --selection-text: #000;
+}
+/* Dark theme */
+body[data-theme=dark] {
+    --content-bg: #2e2e2e;
+    --main-bg-color:#000;
+    --buttons: #2e2e2e;
+    --hover-bg: #4A4A4A;
+    --main-text: #cbcbcb;
+    --theme-border: #FFF;
+    --search-bg: #4A4A4A;
+    --side-bar-open-close-svg: url('../assets/sidebar/side-bar-arrow-white.png');
+    --post-arrow-svg: url('../assets/post/up-down-arrow-512px-white.png');
+    --post-comment-button-svg: url('../assets/post/comment-icon-512px-white.png');
+    --post-share-button-svg: url('../assets/post/share-icon-512px-white.png');
+    --post-save-button-svg: url('../assets/post/save-icon-512px-white.png');
+}
+/* Light theme */
+body[data-theme=light] {
+    --content-bg: #FFF;
+    --main-bg-color:#eeeeee;
+    --buttons: #FFF;
+    --hover-bg: #eeeeee;
+    --main-text: #2e2e2e;
+    --theme-border: #000;
+    --search-bg: #dadada;
+    --side-bar-open-close-svg: url('../assets/sidebar/side-bar-arrow-black.png');
+    --post-arrow-svg: url('../assets/post/up-down-arrow-512px-black.png');
+    --post-comment-button-svg: url('../assets/post/comment-icon-512px-black.png');
+    --post-share-button-svg: url('../assets/post/share-icon-512px-black.png');
+    --post-save-button-svg: url('../assets/post/save-icon-512px-black.png');
 }
 
 /* General page styles */
 ::selection {
-    background-color: var(--dark-selection-background);
-    color: var(--dark-selection-text);
+    background-color: var(--selection-background);
+    color: var(--selection-text);
 }
 button {
-    color: var(--dark-main-text);
+    color: var(--main-text);
     font: inherit;
 }
 button:hover {
@@ -42,15 +56,14 @@ button:hover {
 }
 html {
     height: 100%;
-    color: var(--dark-main-text);
 }
-
 body {
     position: relative;
     top: 58px;
     min-width: 400px;
     height: calc(100% - 58px);
-    background-color: var(--dark-main-bg-color);
+    background-color: var(--main-bg-color);
+    color: var(--main-text);
 }
 @media screen and (max-width: 575px) {
     body {
@@ -62,7 +75,4 @@ body {
     height: 100%;
     width: 100%;
     justify-content: space-between;
-}
-@media screen and (prefers-color-scheme: dark) {
-
 }

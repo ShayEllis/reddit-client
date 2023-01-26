@@ -16,14 +16,8 @@
     border-radius: 20px;
     height: 34px;
     transition-duration: 0.5s;
-}
-.searchbar-light {
-    background-color: var(--light-search-bg);
-    color: var(--light-main-text);
-}
-.searchbar-dark {
-    background-color: var(--dark-search-bg);
-    color: var(--dark-main-text);
+    background-color: var(--search-bg);
+    color: var(--main-text);
 }
 .searchbar-inactive {
     width: 80px;
@@ -61,10 +55,5 @@
     width: 20px;
     height: 20px;
     margin: 4px;
-}
-.svg-dark {
-    fill: var(--dark-main-text);
-}
-.svg-light {
-    fill: var(--light-main-text);
+    fill: var(--main-text);
 }

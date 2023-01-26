@@ -2,35 +2,35 @@ import { useEffect } from 'react'
 import Searchbar from '../../features/searchbar/Searchbar'
 import './navbar.css'
 
-//element.SetAttribute('attName', 'value') -- set or change attribute of an element
-
 function Navbar () {
-    // Set or change theme in localStorage
+    // Select the body element and set the data-theme attribute
+    function setBodyTheme (theme) {
+        const bodyElement = document.getElementsByTagName('body')[0]
+        
+        if (theme !== bodyElement.getAttribute('data-theme')) {
+            bodyElement.setAttribute('data-theme', theme)
+        }
+    }
+    // Set or change theme in localStorage and set data-theme attribute on body element
     function setThemePreference (theme) {
         if (!localStorage.getItem('current-theme')) {
             localStorage.setItem('current-theme', theme)
-            return undefined
-        }
-        if (localStorage.getItem('current-theme')) {
+            setBodyTheme(theme)
+        } else if (localStorage.getItem('current-theme')) {
             const themeChanged = theme !== localStorage.getItem('current-theme')
             if (themeChanged) {
                 localStorage.setItem('current-theme', theme)
-                return undefined
+                setBodyTheme(theme)
             }
         }
     }
-
-    function setTheme () {
-        const theme = localStorage.getItem('current-theme')
-
-        
+    // Set localStorage theme value corresponding to the button that was clicked
+    function handleThemeButtonClick (event) {
+        // Set localStorage theme value
+        setThemePreference(event.target.name)
     }
     
     useEffect(() => {
-        /*
-        3. clear localStorage when app is closed?
-        */
-
         // Set theme on page load if one isnt already in localStorage
         function handlePageLoad () {
             const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
@@ -38,12 +38,13 @@ function Navbar () {
             if (!localStorage.getItem('current-theme')){
                 setThemePreference(currentTheme)
             }
+            setBodyTheme(localStorage.getItem('current-theme'))
         }
         window.addEventListener('load', handlePageLoad)
 
         // Change theme on system preference change
-        function detectSystemThemeChange () {
-            const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        function detectSystemThemeChange ({ matches: isDark}) {
+            const currentTheme = isDark ? 'dark' : 'light'
 
             setThemePreference(currentTheme)
         }
@@ -54,13 +55,6 @@ function Navbar () {
             window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', detectSystemThemeChange)
         }
     }, [])
-
-    function handleThemeButtonClick (event) {
-        // Toggle localStorage theme value
-        setThemePreference(event.target.name)
-
-        // Change theme settings
-    }
 
     return (
         <header id='top-nav'>
