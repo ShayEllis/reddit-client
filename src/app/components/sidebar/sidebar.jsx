@@ -17,35 +17,22 @@ const Sidebar = () => {
     }, [])
 
     const handleSidebarButtonClick = (event) => {
-        const sidebarButtonClassList = event.target.parentNode.classList
-        const sidebarConatinerClassList = event.target.parentNode.parentNode.classList
+        const sidebarButtonClassList = document.getElementById('open-close-sidebar').classList
+        const sidebarConatinerClassList = document.getElementById('sidebar').classList
 
         if (windowWidth > 575) {
-            if (!sidebarButtonClassList.contains('button-is-rotated')) {
-                sidebarButtonClassList.remove('button-not-rotated')
-                sidebarConatinerClassList.remove('sidebar-is-open')
-                sidebarButtonClassList.add('button-is-rotated')
-                sidebarConatinerClassList.add('sidebar-is-closed')
-            } else {
-                sidebarButtonClassList.remove('button-is-rotated')
-                sidebarConatinerClassList.remove('sidebar-is-closed')
-            }  
+            sidebarButtonClassList.toggle('button-is-rotated')
+            sidebarConatinerClassList.toggle('sidebar-is-closed')
+
         } else if (windowWidth <= 575) {
-            if(!sidebarButtonClassList.contains('button-not-rotated')){
-                sidebarButtonClassList.remove('button-is-rotated')
-                sidebarConatinerClassList.remove('sidebar-is-closed')
-                sidebarButtonClassList.add('button-not-rotated')
-                sidebarConatinerClassList.add('sidebar-is-open')
-            } else {
-                sidebarButtonClassList.remove('button-not-rotated')
-                sidebarConatinerClassList.remove('sidebar-is-open')
-            }
+            sidebarButtonClassList.toggle('button-not-rotated')
+            sidebarConatinerClassList.toggle('sidebar-not-closed')
         }
     }
 
     return (
-        <aside className='sidebar-container' > {/* Add button to open sidebar when window width is below 575px */}
-            <button className='open-close-sidebar-button' onClick={handleSidebarButtonClick}>
+        <aside id='sidebar' className='sidebar-container' > {/* Add button to open sidebar when window width is below 575px */}
+            <button id='open-close-sidebar' className='open-close-sidebar-button' onClick={handleSidebarButtonClick}>
                 <img alt='open/close sidebar' />
             </button>
             <ul id='sidebar-list-container'>

@@ -5,6 +5,7 @@
     width: 200px;
     height: 100%;
     transition-duration: 0.75s;
+    width: 200px;
 }
 @media screen and (max-width: 575px) {
     .sidebar-container {
@@ -14,7 +15,7 @@
 .sidebar-is-closed {
     width: 0;
 }
-.sidebar-is-open {
+.sidebar-not-closed {
     width: 200px;
 }
 
@@ -33,12 +34,6 @@
     transform: rotate(180deg);
     border: 1px solid var(--theme-border);
 }
-@media screen and (max-width: 575px) {
-    .open-close-sidebar-button {
-        left: 0;
-        transform: rotate(0deg);
-    }
-}
 .open-close-sidebar-button img {
     content: var(--side-bar-open-close-svg);
     max-width: 15px;
@@ -46,13 +41,19 @@
     padding: 8px 0;
     top: calc(50% - 29px);
 }
+@media screen and (max-width: 575px) {
+    .open-close-sidebar-button {
+        left: 0;
+        transform: rotate(0deg);
+    }
+}
 .button-is-rotated {
     transform: rotate(0deg);
     left: 0;
 }
 .button-not-rotated {
-    transform: rotate(180deg);
     left: 185px;
+    transform: rotate(180deg);
 }
 
 /* List container */
