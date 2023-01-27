@@ -3,12 +3,12 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    margin: 15px 15px 15px 0;
+    padding: 15px 15px 15px 0;
     justify-content: space-around;
     align-content: flex-start;
     width: 100%;
     min-width: 318px;
-    overflow: hidden;
+    overflow: auto;
 }
 @media screen and (max-width: 575px) {
     #board-container {
