@@ -1,60 +1,13 @@
-import { useEffect } from 'react'
 import Searchbar from '../../features/searchbar/Searchbar'
+import { setThemePreference } from '../../functions/helper-functions'
 import './navbar.css'
 
 function Navbar () {
-    // Select the body element and set the data-theme attribute
-    function setBodyTheme (theme) {
-        const bodyElement = document.getElementsByTagName('body')[0]
-        
-        if (theme !== bodyElement.getAttribute('data-theme')) {
-            bodyElement.setAttribute('data-theme', theme)
-        }
-    }
-    // Set or change theme in localStorage and set data-theme attribute on body element
-    function setThemePreference (theme) {
-        if (!localStorage.getItem('current-theme')) {
-            localStorage.setItem('current-theme', theme)
-            setBodyTheme(theme)
-        } else if (localStorage.getItem('current-theme')) {
-            const themeChanged = theme !== localStorage.getItem('current-theme')
-            if (themeChanged) {
-                localStorage.setItem('current-theme', theme)
-                setBodyTheme(theme)
-            }
-        }
-    }
     // Set localStorage theme value corresponding to the button that was clicked
     function handleThemeButtonClick (event) {
         // Set localStorage theme value
         setThemePreference(event.target.name)
     }
-    
-    useEffect(() => {
-        // Set theme on page load if one isnt already in localStorage
-        function handlePageLoad () {
-            const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-
-            if (!localStorage.getItem('current-theme')){
-                setThemePreference(currentTheme)
-            }
-            setBodyTheme(localStorage.getItem('current-theme'))
-        }
-        window.addEventListener('load', handlePageLoad)
-
-        // Change theme on system preference change
-        function detectSystemThemeChange ({ matches: isDark}) {
-            const currentTheme = isDark ? 'dark' : 'light'
-
-            setThemePreference(currentTheme)
-        }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemThemeChange)
-
-        return () => {
-            window.removeEventListener('load', handlePageLoad)
-            window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', detectSystemThemeChange)
-        }
-    }, [])
 
     return (
         <header id='top-nav'>
