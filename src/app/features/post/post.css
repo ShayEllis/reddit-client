@@ -11,7 +11,8 @@
     background-color: var(--hover-bg);
     cursor: pointer;
 }
-.post-container img {
+.post-container svg {
+    filter: brightness(85%);
     height: 26px;
     width: 26px;
 }
@@ -32,12 +33,11 @@
     align-items: center;
     height: 100%;
 }
-.up-arrow img {
-    filter: brightness(85%);
-    content: var(--post-arrow-svg);
+.up-arrow svg {
+    fill: var(--main-text);
 }
-.up-arrow:hover img {
-    content: var(--post-arrow-svg);
+.up-arrow:hover svg {
+    fill: #CC3700;
 }
 #vote-container a {
     display: flex;
@@ -45,15 +45,14 @@
     height: 100%;
     padding: 0 5px;
 }
+.down-arrow svg {
+    fill: var(--main-text);
+}
 .down-arrow {
     transform: rotate(180deg);
 }
-.down-arrow img {
-    filter: brightness(85%);
-    content: var(--post-arrow-svg);
-}
-.down-arrow:hover img {
-    content: var(--post-arrow-svg);
+.down-arrow:hover svg {
+    fill: #5A75CC;
 }
 
 /* Center of post, content */
@@ -73,6 +72,9 @@
     border-top: 1px solid black;
     overflow: hidden;
 }
+#post-footer svg {
+    fill: var(--main-text);
+}
 .footer-link {
     height: 100%;
 }
@@ -82,18 +84,6 @@
     padding: 0 10px;
     height: 100%;
 }
-.comment-button-container img {
-    filter: brightness(85%);
-    content: var(--post-comment-button-svg);
-}
-.share-button-container img {
-    filter: brightness(85%);
-    content: var(--post-share-button-svg);
-}
-.save-button-container img {
-    filter: brightness(85%);
-    content: var(--post-save-button-svg);
-}
 .footer-link span {
-    margin-left: 5px;
+    margin-left: 8px;
 }

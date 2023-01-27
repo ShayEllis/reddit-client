@@ -4,6 +4,7 @@
     overflow: scroll;
     width: 200px;
     height: 100%;
+    transition-property: width;
     transition-duration: 0.75s;
     width: 200px;
 }
@@ -32,14 +33,17 @@
     top: calc(50% - 29px);
     left: 185px;
     transform: rotate(180deg);
-    border: 1px solid var(--theme-border);
+    border: none;
+    border-radius: 3px;
 }
-.open-close-sidebar-button img {
+.open-close-sidebar-button svg {
     content: var(--side-bar-open-close-svg);
-    max-width: 15px;
+    width: 13px;
     height: 36px;
-    padding: 8px 0;
     top: calc(50% - 29px);
+    fill: var(--main-text);
+    border: 1px solid var(--theme-border);
+    border-radius: 3px;
 }
 @media screen and (max-width: 575px) {
     .open-close-sidebar-button {
@@ -71,8 +75,9 @@
     display: block;
     text-align: center;
     background-color:var(--buttons);
+    border: 1px solid black;
 }
-.sidebar-item-light:hover {
+.sidebar-item:hover {
     background-color: var(--hover-bg);
     cursor: pointer;
 }

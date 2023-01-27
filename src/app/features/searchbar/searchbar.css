@@ -15,6 +15,7 @@
     border: 2px solid black;
     border-radius: 20px;
     height: 34px;
+    transition-property: width;
     transition-duration: 0.5s;
     background-color: var(--search-bg);
     color: var(--main-text);

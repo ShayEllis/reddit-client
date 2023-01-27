@@ -20,11 +20,6 @@ html[data-theme=dark] {
     --main-text: #cbcbcb;
     --theme-border: #FFF;
     --search-bg: #4A4A4A;
-    --side-bar-open-close-svg: url('../assets/sidebar/side-bar-arrow-white.png');
-    --post-arrow-svg: url('../assets/post/up-down-arrow-512px-white.png');
-    --post-comment-button-svg: url('../assets/post/comment-icon-512px-white.png');
-    --post-share-button-svg: url('../assets/post/share-icon-512px-white.png');
-    --post-save-button-svg: url('../assets/post/save-icon-512px-white.png');
 }
 /* Light theme */
 html[data-theme=light] {
@@ -35,11 +30,6 @@ html[data-theme=light] {
     --main-text: #2e2e2e;
     --theme-border: #000;
     --search-bg: #dadada;
-    --side-bar-open-close-svg: url('../assets/sidebar/side-bar-arrow-black.png');
-    --post-arrow-svg: url('../assets/post/up-down-arrow-512px-black.png');
-    --post-comment-button-svg: url('../assets/post/comment-icon-512px-black.png');
-    --post-share-button-svg: url('../assets/post/share-icon-512px-black.png');
-    --post-save-button-svg: url('../assets/post/save-icon-512px-black.png');
 }
 
 /* General page styles */
