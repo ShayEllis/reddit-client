@@ -1,5 +1,5 @@
 import Searchbar from '../../features/searchbar/Searchbar'
-import { setThemePreference } from '../../functions/helper-functions'
+import { setThemePreference } from '../../functions/load-theme-helper-functions'
 import './navbar.css'
 
 function Navbar () {

@@ -12,7 +12,7 @@
     --selection-text: #000;
 }
 /* Dark theme */
-body[data-theme=dark] {
+html[data-theme=dark] {
     --content-bg: #2e2e2e;
     --main-bg-color:#000;
     --buttons: #2e2e2e;
@@ -27,7 +27,7 @@ body[data-theme=dark] {
     --post-save-button-svg: url('../assets/post/save-icon-512px-white.png');
 }
 /* Light theme */
-body[data-theme=light] {
+html[data-theme=light] {
     --content-bg: #FFF;
     --main-bg-color:#eeeeee;
     --buttons: #FFF;
