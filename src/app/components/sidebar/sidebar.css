@@ -1,7 +1,7 @@
 /* Sidebar container */
 .sidebar-container {
     flex-shrink: 0;
-    overflow: scroll;
+    overflow: hidden;
     width: 200px;
     height: 100%;
     transition-property: width;
