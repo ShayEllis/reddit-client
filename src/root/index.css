@@ -54,11 +54,12 @@ body {
     height: calc(100% - 58px);
     background-color: var(--main-bg-color);
     color: var(--main-text);
-    overflow: hidden;
+    overflow: auto;
 }
 @media screen and (max-width: 575px) {
     body {
         top: 104px;
+        height: calc(100% - 104px);
     }
 }
 #root {

@@ -6,7 +6,7 @@
     padding: 15px;
     justify-content: space-around;
     align-content: flex-start;
-    width: 100%;
-    min-width: 344px;
+    max-width: 100%;
+    min-width: 372px;
     overflow: auto;
 }

@@ -37,7 +37,8 @@
     fill: var(--main-text);
 }
 .up-arrow:hover svg {
-    fill: #CC3700;
+    filter: brightness(100%);
+    fill: #e32020;
 }
 #vote-container a {
     display: flex;
@@ -52,7 +53,8 @@
     transform: rotate(180deg);
 }
 .down-arrow:hover svg {
-    fill: #5A75CC;
+    filter: brightness(100%);
+    fill: var(--logo)
 }
 
 /* Center of post, content */

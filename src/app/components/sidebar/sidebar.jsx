@@ -23,10 +23,17 @@ const Sidebar = () => {
         if (windowWidth > 575) {
             sidebarButtonClassList.toggle('button-is-rotated')
             sidebarConatinerClassList.toggle('sidebar-is-closed')
-
+            if (sidebarButtonClassList.contains('button-not-rotated')) {
+                sidebarButtonClassList.remove('button-not-rotated')
+                sidebarConatinerClassList.remove('sidebar-not-closed') 
+            }
         } else if (windowWidth <= 575) {
             sidebarButtonClassList.toggle('button-not-rotated')
             sidebarConatinerClassList.toggle('sidebar-not-closed')
+            if (sidebarButtonClassList.contains('button-is-rotated')) {
+                sidebarButtonClassList.remove('button-is-rotated')
+                sidebarConatinerClassList.remove('sidebar-is-closed')
+            }
         }
     }
 
