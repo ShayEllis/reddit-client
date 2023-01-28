@@ -1,6 +1,15 @@
 // Detect if the user prefers the light or dark theme
 const detectTheme = () => {
-    window.matchMedia('(prefers-color-scheme: dark)')
+    return localStorage.getItem('current-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+}
+
+// Select the body element and set the data-theme attribute
+function setHtmlTheme (theme) {
+    const htmlElement = document.firstElementChild
+    
+    if (theme !== htmlElement.getAttribute('data-theme')) {
+        htmlElement.setAttribute('data-theme', theme)
+    }
 }
 
 // Set or change theme in localStorage and set data-theme attribute on body element
@@ -14,15 +23,6 @@ function setThemePreference (theme) {
             localStorage.setItem('current-theme', theme)
             setHtmlTheme(theme)
         }
-    }
-}
-
-// Select the body element and set the data-theme attribute
-function setHtmlTheme (theme) {
-    const bodyElement = document.firstElementChild
-    
-    if (theme !== bodyElement.getAttribute('data-theme')) {
-        bodyElement.setAttribute('data-theme', theme)
     }
 }
 

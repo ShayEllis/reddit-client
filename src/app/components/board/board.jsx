@@ -11,6 +11,12 @@ const Board = () => {
             <Post />
             <Post />
             <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
         </main>
     )
 }

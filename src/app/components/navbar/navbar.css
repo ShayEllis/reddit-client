@@ -23,16 +23,15 @@
     position: relative;
 }
 #toggle-theme {
-    display: block;
+    display: inline-block;
     position: relative;
     background-color: transparent;
     border: none;
     padding: 0;
-    margin-left: 10px;
+    margin-left: 30px;
     height: 30px;
-    width: 55px;
+    width: 30px;
     border-radius: 3px;
-    border: 1px solid var(--theme-border);
 }
 #toggle-theme:hover {
     color: var(--title-text);
@@ -43,26 +42,18 @@
         margin-left: 20px;
     }
 }
-#dropdown-options {
-    position: absolute;
-    display: none;
-    width: 65px;
-    margin-left: 10px;
-    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    z-index: 999;
+.light-theme-icon {
+    fill: yellow;
+    stroke: yellow;
+    height: 100%;
 }
-.dropdown-options-button {
-    display: block;
-    padding: 10px;
-    cursor: pointer;
-    background-color: var(--buttons);
+.light-theme-icon line {
+    stroke: yellow;
 }
-.dropdown-options-button:hover {
-    background-color: var(--hover-bg);
-}
-#theme-dropdown:hover #dropdown-options {
-    display: block;
+.dark-theme-icon {
+    vertical-align: middle;
+    fill: black;
+    height: 80%;
 }
 
 /* Icon and title */

@@ -2,12 +2,18 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+#root {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
 
 /* App color themes */
 :root {
     --logo-bg: #000;
-    --logo: #007fd4;
-    --title-text: #007fd4;
+    --logo: #2baaff;
+    --title-text: #2baaff;
     --selection-background: #7ac5f7;
     --selection-text: #000;
 }
@@ -55,6 +61,7 @@ body {
     background-color: var(--main-bg-color);
     color: var(--main-text);
     overflow: auto;
+    transition: all 0.5s ease;
 }
 @media screen and (max-width: 575px) {
     body {
@@ -62,9 +69,11 @@ body {
         height: calc(100% - 104px);
     }
 }
-#root {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
+/* Transistions were delayed, these needed to be selected individually */
+a, li, header {
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+svg {
+    transition-duration: 0.5s;
 }
