@@ -1,5 +1,5 @@
 /* Top nav */
-#top-nav {
+#header {
     position: fixed;
     top: 0;
     display: flex;
@@ -13,7 +13,7 @@
     background-color: var(--content-bg);
 }
 @media screen and (max-width: 575px) {
-    #top-nav {
+    #header {
         flex-direction: column;
     }
 }
@@ -57,13 +57,13 @@
 }
 
 /* Icon and title */
-#top-nav-logo-container {
+#header-logo-container {
     display: flex;
     flex-shrink: 0;
     align-items: center;
 }
 @media screen and (max-width: 575px) {
-    #top-nav-logo-container {
+    #header-logo-container {
         width: 100%;
         justify-content: space-between;
     }
@@ -73,18 +73,18 @@
     flex-shrink: 0;
     align-items: center;
 }
-#top-nav-logo {
+#header-logo {
     height: 48px;
     padding: 0 10px 0 0;
     margin: 5px 0;
 }
-#top-nav-logo circle {
+#header-logo circle {
     fill: var(--logo-bg);
 }
-#top-nav-logo path {
+#header-logo path {
     fill: var(--logo);
 }
-#top-nav-logo-container h1 {
+#header-logo-container h1 {
     display: inline-block;
     white-space: nowrap;
     color: var(--title-text);
