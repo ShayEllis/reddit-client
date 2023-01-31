@@ -8,7 +8,7 @@ const appRoutes = [
     {
         path: '/',
         element: <App />,
-        loader: appLoader,
+        loader: appLoader, //Causes issues with test, will not render the <App /> component
         errorElement: <Error />,
         children: [
             {
