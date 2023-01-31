@@ -8,14 +8,14 @@ const Sidebar = () => {
         if (window.innerWidth > 575) {
             sidebarButtonClassList.toggle('button-is-rotated')
             sidebarConatinerClassList.toggle('sidebar-is-closed')
-            if (sidebarButtonClassList.contains('button-not-rotated')) {
+            if (sidebarButtonClassList.contains('button-not-rotated') || sidebarButtonClassList.contains('sidebar-not-closed')) {
                 sidebarButtonClassList.remove('button-not-rotated')
                 sidebarConatinerClassList.remove('sidebar-not-closed') 
             }
         } else if (window.innerWidth <= 575) {
             sidebarButtonClassList.toggle('button-not-rotated')
             sidebarConatinerClassList.toggle('sidebar-not-closed')
-            if (sidebarButtonClassList.contains('button-is-rotated')) {
+            if (sidebarButtonClassList.contains('button-is-rotated') || sidebarButtonClassList.contains('sidebar-is-closed')) {
                 sidebarButtonClassList.remove('button-is-rotated')
                 sidebarConatinerClassList.remove('sidebar-is-closed')
             }

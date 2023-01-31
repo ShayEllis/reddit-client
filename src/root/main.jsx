@@ -5,30 +5,10 @@ import { Provider } from 'react-redux'
 import store from './store'
 import './reset.css'
 
-import App from '../app/App'
-import Error from '../app/components/error/error'
-import Board from '../app/components/board/board'
-import { appLoader } from '../app/App'
-import { apiAuth } from '../app/api/reddit-api'
+import appRoutes from './appRoutes'
 
-// Page routes
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    loader: appLoader,
-    errorElement: <Error />,
-    children: [
-      {
-        path: '/authenticate/:apiResponse',
-      },
-      {
-        path: '/post',
-        element: <Board />,
-      }
-    ]
-  }
-])
+// Create a BrowserRouter with the imported routes
+const router = createBrowserRouter(appRoutes)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
