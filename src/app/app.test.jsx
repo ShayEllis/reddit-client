@@ -1,5 +1,6 @@
-import { render } from '@testing-library/react'
-import App from './App'
+import { render, waitFor } from '@testing-library/react'
+import { createMemoryRouter, RouterProvider } from 'react-router-dom'
+import appRoutes from "../root/appRoutes"
 
 /* getBy returns an element or an error
 getByText - most common
@@ -77,15 +78,25 @@ integration tests?
 */
 
 describe('App component', () => {
+    const setupMemoryRouter = (options = { initialEntries: ['/'] }) => {
+        const router = createMemoryRouter(appRoutes, options)
+        return <RouterProvider router={router} />
+    }
 
-    it('should render a header component', () => {
-        // const { getByRole } = render(<App />)
-        // const header = getByRole('banner')
-        // expect(header).toBeInTheDocument()
+    it('should render App with a header as the root route', async () => {
+        const { findByRole } = render(setupMemoryRouter())
+
+        expect(await findByRole('banner')).toBeInTheDocument()
     })
-    it('should render a sidebar component', () => {
-        // const { debug, getByRole } = render(<App />)
-        // const sidebar = getByRole('complementary')
-        // expect(sidebar).toBeInTheDocument()
+    it('should render App with a sidebar as the root route', async () => {
+        const { findByRole } = render(setupMemoryRouter())
+
+        expect(await findByRole('complementary')).toBeInTheDocument()
+    })
+    it('should render the error page with a bad route', async () => {
+        const badRoute = { initialEntries: ['/bad/route']}
+        const { findByRole } = render(setupMemoryRouter(badRoute))
+        const el = (await findByRole('heading')).textContent
+        expect(el).toContain('An error has occurred')
     })
 })

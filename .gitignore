@@ -25,3 +25,6 @@ dist-ssr
 
 # API file with private ID's
 reddit-api.js
+
+# Coverage test folder
+coverage

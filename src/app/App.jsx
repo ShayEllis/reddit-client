@@ -10,8 +10,6 @@ const appLoader = ({ request }) => {
 function App () {
   const test = useLoaderData();
 
-  console.log(test)
-
   return (
     <>
       <Header />

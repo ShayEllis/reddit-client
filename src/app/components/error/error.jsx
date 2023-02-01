@@ -6,8 +6,7 @@ function Error() {
 
     return (
         <section id='error-page'>
-            <h2>Oh No!</h2>
-            <p>An error has occurred</p>
+            <h2>Oh No! - An error has occurred</h2>
             <p>{`${error.status} - ${error.statusText}`}</p>
             <p>{error.data}</p>
         </section>
