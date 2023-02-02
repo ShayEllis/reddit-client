@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import appRoutes from "../root/appRoutes"
 
@@ -78,24 +78,30 @@ integration tests?
 */
 
 describe('App component', () => {
+    // Setup function that creates the memory router and renders the Router Provider
     const setupMemoryRouter = (options = { initialEntries: ['/'] }) => {
+        // Create memory router
         const router = createMemoryRouter(appRoutes, options)
-        return <RouterProvider router={router} />
+        // Return the rendered Router Provider
+        return {
+            ...render(<RouterProvider router={router} />)
+        }
     }
-
     it('should render App with a header as the root route', async () => {
-        const { findByRole } = render(setupMemoryRouter())
-
+        // Use the setup function and pull findByRoll from the render()
+        const { findByRole } = setupMemoryRouter()
+        // Loaders are used in the route, so an async function with await and findByRole need to be used to get the rendered component
         expect(await findByRole('banner')).toBeInTheDocument()
     })
     it('should render App with a sidebar as the root route', async () => {
-        const { findByRole } = render(setupMemoryRouter())
+        const { findByRole } = setupMemoryRouter()
 
         expect(await findByRole('complementary')).toBeInTheDocument()
     })
     it('should render the error page with a bad route', async () => {
         const badRoute = { initialEntries: ['/bad/route']}
-        const { findByRole } = render(setupMemoryRouter(badRoute))
+        const { findByRole } = setupMemoryRouter(badRoute)
+
         const el = (await findByRole('heading')).textContent
         expect(el).toContain('An error has occurred')
     })
