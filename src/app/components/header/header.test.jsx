@@ -1,4 +1,4 @@
-import { render, within } from "@testing-library/react";
+import { render, within, fireEvent } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 import Header from "./Header";
 
@@ -23,5 +23,9 @@ describe('Header component', () => {
         // Check that the Icon toggled to the light theme icon
         expect(within(themeButton).getByTitle(/light theme/i)).toBeInTheDocument()
         expect(within(themeButton).queryByTitle(/dark theme/i)).toBeNull()
+    })
+    it('test', () => {
+        const user = userEvent.setup()
+        console.log(user)
     })
 })
