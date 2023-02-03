@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Searchbar from '../../features/searchbar/Searchbar'
-import { setThemePreference, setHtmlTheme, detectTheme } from '../../functions/load-theme-helper-functions'
+import { setThemePreference, setBodyTheme, detectTheme } from '../../functions/load-theme-helper-functions'
 import './header.css'
 
 function Header () {
@@ -13,7 +13,7 @@ function Header () {
                 if (!localStorage.getItem('current-theme')){
                     setThemePreference(currentTheme)
                 }
-                setHtmlTheme(currentTheme)
+                setBodyTheme(currentTheme)
             }
             window.addEventListener('load', handlePageLoad)
 

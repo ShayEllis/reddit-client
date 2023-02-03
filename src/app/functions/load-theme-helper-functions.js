@@ -4,11 +4,11 @@ const detectTheme = () => {
 }
 
 // Select the body element and set the data-theme attribute
-function setHtmlTheme (theme) {
-    const htmlElement = document.firstElementChild
+function setBodyTheme (theme) {
+    const bodyElement = document.getElementsByTagName('body')[0]
     
-    if (theme !== htmlElement.getAttribute('data-theme')) {
-        htmlElement.setAttribute('data-theme', theme)
+    if (theme !== bodyElement.getAttribute('data-theme')) {
+        bodyElement.setAttribute('data-theme', theme)
     }
 }
 
@@ -16,14 +16,14 @@ function setHtmlTheme (theme) {
 function setThemePreference (theme) {
     if (!localStorage.getItem('current-theme')) {
         localStorage.setItem('current-theme', theme)
-        setHtmlTheme(theme)
+        setBodyTheme(theme)
     } else if (localStorage.getItem('current-theme')) {
         const themeChanged = theme !== localStorage.getItem('current-theme')
         if (themeChanged) {
             localStorage.setItem('current-theme', theme)
-            setHtmlTheme(theme)
+            setBodyTheme(theme)
         }
     }
 }
 
-export { detectTheme, setThemePreference, setHtmlTheme }
+export { detectTheme, setThemePreference, setBodyTheme }

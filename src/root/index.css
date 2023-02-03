@@ -18,7 +18,7 @@
     --selection-text: #000;
 }
 /* Dark theme */
-html[data-theme=dark] {
+body[data-theme=dark] {
     --content-bg: #2e2e2e;
     --main-bg-color:#000;
     --buttons: #2e2e2e;
@@ -28,7 +28,7 @@ html[data-theme=dark] {
     --search-bg: #4A4A4A;
 }
 /* Light theme */
-html[data-theme=light] {
+body[data-theme=light] {
     --content-bg: #FFF;
     --main-bg-color:#eeeeee;
     --buttons: #FFF;
