@@ -1,15 +1,19 @@
-import { render, within, screen, fireEvent } from "@testing-library/react";
+import { render, within, act, screen, fireEvent } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
+import { vi } from "vitest";
 import Header from "./Header";
 
 describe('Header component', () => {
     describe('', () => {
         beforeEach(() => {
-            //window.localStorage.clear()
+            window.matchMedia.mockClear()
         })
-        it('test', async () => {
+        afterAll(() => {
+            localStorage.clear()
+        })
+        it('should set the correct theme based on localStorage value and ignore system theme', async () => {
             //  Page load
-                // 	Detect current theme - detectTheme() function is called 
+                // 	Detect current theme - detectTheme() function is called
                 // 		localStorage.getItem('current-theme') or (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') is called
                 // 	Checks if anything is in local storage
                 // 		If nothing is in local stoarage setThemePreference is called with the current theme detected above
@@ -25,21 +29,29 @@ describe('Header component', () => {
                 // Correct Data-theme is set on HTML element
 
 
-
             const { getByRole, debug } = render(<Header />)
             const user = userEvent.setup()
             window.dispatchEvent(new Event('load'))
-    
+            
+            localStorage.setItem('current-theme', 'dark')
             //localStorage.clear()
-            console.log(localStorage.getItem('current-theme'))
-            console.log(window.matchMedia('(prefers-color-scheme: dark)').matches)
+            // console.log(localStorage.getItem('current-theme'))
+            // console.log(window.matchMedia('(prefers-color-scheme: dark)').matches)
             debug()
-            window.dispatchEvent(new Event('load'))
+            //window.dispatchEvent(new Event('load'))
     
-            console.log(localStorage.getItem('current-theme'))
-            console.log(window.matchMedia('(prefers-color-scheme: dark)').matches)
+            // console.log(localStorage.getItem('current-theme'))
+            // console.log(window.matchMedia('(prefers-color-scheme: dark)').matches)
     
             debug()
+
+            //console.log(window.matchMedia.mock.calls)
+        })
+        it('should set the theme based on system theme if nothing is in localStorage', () => {
+
+        })
+        it('should change the theme if system theme is changed and ignore localStorage', () => {
+
         })
     })
     describe('theme icon', () => {
@@ -51,7 +63,7 @@ describe('Header component', () => {
         it('theme icon should toggle the svg image when clicked', async () => {
             // Setup user click test
             const user = userEvent.setup()
-            const { getByTitle } = render(<Header />)
+            const { getByTitle, debug } = render(<Header />)
             // Select theme button
             const themeButton = getByTitle(/change theme/i)
             // Check if the dark theme icon is in the document
