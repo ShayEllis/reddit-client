@@ -26,6 +26,12 @@ describe('Header component', () => {
             window.dispatchEvent(new Event('load'))
             expect(window.matchMedia.mock.calls.length).toBe(3)
             expect(document.getElementsByTagName('body')[0].getAttribute('data-theme')).toBe('light')
+            // And switches back to dark
+            localStorage.setItem('current-theme', 'dark')
+            expect(localStorage.getItem('current-theme')).toBe('dark')
+            window.dispatchEvent(new Event('load'))
+            expect(window.matchMedia.mock.calls.length).toBe(3)
+            expect(document.getElementsByTagName('body')[0].getAttribute('data-theme')).toBe('dark')
         })
         it('should set the theme based on system theme if nothing is in localStorage', () => {
             render(<Header />)
