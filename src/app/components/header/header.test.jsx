@@ -26,32 +26,30 @@ describe('Header component', () => {
             window.dispatchEvent(new Event('load'))
             expect(window.matchMedia.mock.calls.length).toBe(3)
             expect(document.getElementsByTagName('body')[0].getAttribute('data-theme')).toBe('light')
-            // And switches back to dark
-            localStorage.setItem('current-theme', 'dark')
-            expect(localStorage.getItem('current-theme')).toBe('dark')
-            window.dispatchEvent(new Event('load'))
-            expect(window.matchMedia.mock.calls.length).toBe(3)
-            expect(document.getElementsByTagName('body')[0].getAttribute('data-theme')).toBe('dark')
         })
         it('should set the theme based on system theme if nothing is in localStorage', () => {
             render(<Header />)
             expect(localStorage.getItem('current-theme')).toBeFalsy()
             expect(window.matchMedia('(prefers-color-scheme: dark)').matches).toBe(true)
-            dispatchEvent(new Event('load'))
+            window.dispatchEvent(new Event('load'))
             expect(localStorage.getItem('current-theme')).toBe('dark')
         })
     })
     describe('theme icon', () => {
+        afterEach(() => {
+            localStorage.clear()
+        })
         it('should render correctly', () => {
             const { getByTitle } = render(<Header />)
             const themeButton = getByTitle(/change theme/i)
             expect(themeButton).toBeInTheDocument()
         })
-        it('theme icon should toggle the svg image when clicked', async () => {
+        it('should toggle the svg image when clicked', async () => {
             // Setup user click test
             const user = userEvent.setup()
             const { getByTitle } = render(<Header />)
             const themeButton = getByTitle(/change theme/i)
+            window.dispatchEvent(new Event('load'))
             // Check if the dark theme icon is in the document
             expect(within(themeButton).getByTitle(/light theme/i)).toBeInTheDocument()
             // Check that the light theme icon is not in the document
@@ -61,6 +59,17 @@ describe('Header component', () => {
             // Check that the Icon toggled to the light theme icon
             expect(within(themeButton).getByTitle(/dark theme/i)).toBeInTheDocument()
             expect(within(themeButton).queryByTitle(/light theme/i)).toBeNull()
+        })
+        it('should change localStorage theme setting when clicked', async () => {
+            const { getByTitle, debug } = render(<Header />)
+            const user = userEvent.setup()
+            window.dispatchEvent(new Event('load'))
+            expect(localStorage.getItem('current-theme')).toBe('dark')
+            const themeButton = getByTitle(/change theme/i)
+            await user.click(themeButton)
+            expect(localStorage.getItem('current-theme')).toBe('light')
+            await user.click(themeButton)
+            expect(localStorage.getItem('current-theme')).toBe('dark')
         })
     })
 })
