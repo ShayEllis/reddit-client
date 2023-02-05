@@ -19,10 +19,10 @@ function Header () {
 
             // Change theme on system preference change
             function detectSystemThemeChange ({ matches: isDark}) {
-                const currentTheme = isDark ? 'dark' : 'light'
+                const theme = isDark ? 'dark' : 'light'
                 // Set localStorage theme value and local function state
-                setThemePreference(currentTheme)
-                setCurrentTheme(currentTheme)
+                setThemePreference(theme)
+                setCurrentTheme(theme)
             }
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemThemeChange)
 
@@ -33,8 +33,8 @@ function Header () {
     }, [])
 
     // Set localStorage theme value corresponding to the button that was clicked
-    function handleThemeButtonClick (event) {
-        const newTheme = detectTheme() === 'dark' ? 'light' : 'dark'
+    function handleThemeButtonClick () {
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
         // Set localStorage theme value and local function state
         setThemePreference(newTheme)
         setCurrentTheme(newTheme)
