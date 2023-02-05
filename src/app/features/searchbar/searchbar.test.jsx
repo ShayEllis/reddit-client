@@ -1,7 +1,13 @@
 import { render } from "@testing-library/react";
 
 describe('', () => {
-    it('', () => {
-        
+    it('searchbar focus', () => {
+
+    })
+    it('searchbar blur', () => {
+
+    })
+    it('searchbar submit', () => {
+
     })
 })
