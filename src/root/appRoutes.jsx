@@ -2,7 +2,7 @@ import App from '../app/App'
 import Error from '../app/components/error/error'
 import Board from '../app/components/board/board'
 import { appLoader } from '../app/App'
-import { redditAPI } from '../app/api/reddit-api'
+//import { redditAPI } from '../app/api/reddit-api'
 
 const appRoutes = [
     {
