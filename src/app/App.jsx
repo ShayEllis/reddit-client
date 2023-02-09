@@ -6,8 +6,11 @@ import { redirect } from 'react-router-dom'
 import { redditAPI } from './api/reddit-api'
 
 const appLoader = ({ request }) => {
-  //check localStorage for Api token and experation time -> send to login page if needed
-  return 'test' //redirect('/login')
+  //check localStorage for Api token and experation time -> send to login page if needed?
+  if (!localStorage.getItem('redditToken')) {
+    const { mobileAuthURI, state } = redditAPI.generateAuthorizationURI()
+    return 'test' //window.location.href = mobileAuthURI
+  }
 }
 
 function App () {
