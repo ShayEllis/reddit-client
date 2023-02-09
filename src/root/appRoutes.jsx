@@ -1,8 +1,9 @@
 import App from '../app/App'
 import Error from '../app/components/error/error'
 import Board from '../app/components/board/board'
+import Login from '../app/features/login/login'
 import { appLoader } from '../app/App'
-//import { redditAPI } from '../app/api/reddit-api'
+
 
 const appRoutes = [
     {
@@ -12,13 +13,15 @@ const appRoutes = [
         errorElement: <Error />,
         children: [
             {
-                path: '/authenticate/:apiResponse'
-            },
-            {
                 path: '/board',
                 element: <Board />
             }
         ]
+    },
+    {
+        path: '/login',
+        element: <Login />
+
     }
 ]
 
