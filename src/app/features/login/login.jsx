@@ -11,15 +11,14 @@ const Login = () => {
 
     useEffect(() => {
         if (!localStorage.getItem('redditToken') && !searchParams.toString()) { // also need to account for "undefined" & make sure token is not expired
-            const { mobileAuthURI, state, } = redditAPI.generateAuthorizationURI()
+            const { desktopAuthURI, state, } = redditAPI.generateAuthorizationURI()
             localStorage.setItem('authState', state)
-            window.location.href = mobileAuthURI
+            window.location.href = desktopAuthURI
         } else if (searchParams.toString() && !localStorage.getItem('redditToken')) {
             const state = localStorage.getItem('authState')
             const responseResult = redditAPI.checkApiResponse(searchParams, state)
             if (typeof responseResult !== 'object') {
                 redditAPI.requestAccessToken(responseResult).then((result) => {
-                    console.log(result)
                     if(result) {
                         localStorage.setItem('redditToken', result.access_token)
                         localStorage.setItem('redditTokenExpiresIn', result.expires_in)

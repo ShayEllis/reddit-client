@@ -40,6 +40,11 @@ function Header () {
         setCurrentTheme(newTheme)
     }
 
+    async function handleLogout () {
+        const response = await fetch('http://localhost:5173/api/logout', { method: 'POST' })
+        console.log(response)
+    }
+
     return (
         <header id='header'>
             <div id='header-logo-container'>
@@ -59,6 +64,9 @@ function Header () {
                     <svg className="dark-theme-icon" title='Dark Theme' viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
                         <path d="M566.422 1024c157.924 0 302.158-71.85 397.714-189.584 14.136-17.416-1.278-42.86-23.124-38.7-248.406 47.308-476.524-143.152-476.524-393.908 0-144.444 77.324-277.27 202.996-348.788 19.372-11.024 14.5-40.394-7.512-44.46A516.312 516.312 0 0 0 566.422 0c-282.618 0-512 229.022-512 512 0 282.618 229.022 512 512 512z"  />
                     </svg>}
+                </button>
+                <button onClick={handleLogout}>
+                    Logout
                 </button>
             </div>
             <Searchbar />
