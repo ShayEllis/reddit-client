@@ -16,7 +16,6 @@ function Header () {
                 setBodyTheme(currentTheme)
             }
             window.addEventListener('load', handlePageLoad)
-
             // Change theme on system preference change
             function detectSystemThemeChange ({ matches: isDark}) {
                 const theme = isDark ? 'dark' : 'light'
@@ -25,7 +24,6 @@ function Header () {
                 setCurrentTheme(theme)
             }
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemThemeChange)
-
         return () => {
             window.removeEventListener('load', handlePageLoad)
             window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', detectSystemThemeChange)

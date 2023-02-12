@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { redditAPI } from "../../api/reddit-api"
-import { useSearchParams, redirect } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import './login.css'
 
 const Login = () => {
@@ -10,26 +10,31 @@ const Login = () => {
     const [loginStatus, setLoginStatus] = useState(null)
 
     useEffect(() => {
-        if (!localStorage.getItem('redditToken') && !searchParams.toString()) { // also need to account for "undefined" & make sure token is not expired
-            const { desktopAuthURI, state, } = redditAPI.generateAuthorizationURI()
-            localStorage.setItem('authState', state)
-            window.location.href = desktopAuthURI
-        } else if (searchParams.toString() && !localStorage.getItem('redditToken')) {
-            const state = localStorage.getItem('authState')
-            const responseResult = redditAPI.checkApiResponse(searchParams, state)
-            if (typeof responseResult !== 'object') {
-                redditAPI.requestAccessToken(responseResult).then((result) => {
-                    if(result) {
-                        localStorage.setItem('redditToken', result.access_token)
-                        localStorage.setItem('redditTokenExpiresIn', result.expires_in)
-                        localStorage.setItem('redditRefreshToken', result.refresh_token)
-                        navigate('/app')
-                    }
-                })
-            } else {
-                setLoginStatus(responseResult.errorInfo)
+        const redditToken = localStorage.getItem('redditToken')
+        if (!redditToken || redditToken === 'undefined') { // Make sure token is not expired
+            if (!searchParams.toString()) {
+                const { desktopAuthURI, state, } = redditAPI.generateAuthorizationURI()
+                localStorage.setItem('authState', state)
+                window.location.href = desktopAuthURI
+            } else if (searchParams.toString()) {
+                const state = localStorage.getItem('authState')
+                const responseResult = redditAPI.checkApiResponse(searchParams, state)
+                if (typeof responseResult !== 'object') {
+                    redditAPI.requestAccessToken(responseResult).then((result) => {
+                        if (result) {
+                            const tokenExpiration = new Date()
+                            tokenExpiration.setTime(tokenExpiration.getTime() + (result.expires_in * 1000))
+                            localStorage.setItem('redditToken', result.access_token)
+                            localStorage.setItem('redditTokenExpirationDate', tokenExpiration)
+                            localStorage.setItem('redditRefreshToken', result.refresh_token)
+                            navigate('/app')
+                        }
+                    })
+                } else {
+                    setLoginStatus(responseResult.errorInfo)
+                }
             }
-        } else {
+        }   else {
             navigate('/app')
         }
     }, [searchParams])
