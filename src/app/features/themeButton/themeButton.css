@@ -1,0 +1,31 @@
+/* Theme button */
+#theme-dropdown {
+    position: relative;
+}
+#toggle-theme {
+    display: inline-block;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 3px;
+}
+#toggle-theme:hover {
+    color: var(--title-text);
+    background-color: var(--hover-bg);
+}
+.light-theme-icon {
+    fill: yellow;
+    stroke: yellow;
+    height: 100%;
+}
+.light-theme-icon line {
+    stroke: yellow;
+}
+.dark-theme-icon {
+    vertical-align: middle;
+    fill: black;
+    height: 80%;
+}

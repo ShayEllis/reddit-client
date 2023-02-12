@@ -1,0 +1,37 @@
+/* User button */
+#user-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 48px;
+    width: 48px;
+}
+@media screen and (max-width: 575px) {
+    #user-dropdown {
+        width: 50%;
+    }
+}
+#user-button {
+    border-style: none;
+    padding: 0;
+    height: 48px;
+    width: 48px;
+    background: var(--main-bg-color);
+    border-radius: 50%;
+}
+#user-button img {
+    max-width: 100%;
+    overflow: hidden;
+}
+#dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 9;
+    width: 150px;
+    background-color: gray;
+    top: 55px;
+}
+#user-dropdown:hover .dropdown-content {
+    display: block;
+}

@@ -11,11 +11,6 @@ export default defineConfig({
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api\/request/, '')
         },
-        '/api/logout': {
-          target: 'http://www.reddit.com/logout',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api\/logout/, '')
-        },
         '/api/v1/me': {
           target: 'https://oauth.reddit.com/api/v1/me',
           changeOrigin: true,

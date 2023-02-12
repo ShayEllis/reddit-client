@@ -5,6 +5,7 @@
 }
 @media screen and (max-width: 575px) {
     #search-container {
+        order: 2;
         margin-bottom: 12px;
     }
 }
