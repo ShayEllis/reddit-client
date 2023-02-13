@@ -1,7 +1,4 @@
 /* Theme button */
-#theme-dropdown {
-    position: relative;
-}
 #toggle-theme {
     display: inline-block;
     position: relative;
@@ -12,11 +9,8 @@
     width: 30px;
     border-radius: 3px;
 }
-#toggle-theme:hover {
-    color: var(--title-text);
-    background-color: var(--hover-bg);
-}
 .light-theme-icon {
+    vertical-align: middle;
     fill: yellow;
     stroke: yellow;
     height: 100%;

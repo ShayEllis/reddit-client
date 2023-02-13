@@ -1,5 +1,6 @@
 /* User button */
 #user-dropdown {
+    transition: inherit;
     position: relative;
     display: flex;
     align-items: center;
@@ -13,6 +14,7 @@
     }
 }
 #user-button {
+    transition: inherit;
     border-style: none;
     padding: 0;
     height: 48px;
@@ -23,15 +25,4 @@
 #user-button img {
     max-width: 100%;
     overflow: hidden;
-}
-#dropdown-content {
-    display: none;
-    position: absolute;
-    z-index: 9;
-    width: 150px;
-    background-color: gray;
-    top: 55px;
-}
-#user-dropdown:hover .dropdown-content {
-    display: block;
 }
