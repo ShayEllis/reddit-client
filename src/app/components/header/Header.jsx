@@ -16,10 +16,8 @@ function Header () {
                 </div>
                 
             </div>
-
                 <Searchbar />
                 <UserButton />
-
         </header>
     )
 }

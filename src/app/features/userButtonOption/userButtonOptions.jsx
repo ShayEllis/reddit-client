@@ -7,10 +7,18 @@ const UserButtonOptions = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const checkButtonClick = () => {
-            console.log('clicked')
+        const checkButtonClick = (event) => {
+            console.log(event.target.closest('#dropdown-content')) // use to check if the element clicked is a descendant
+
+
+            // console.log(allButtonOptionDescendants)
+            // console.log(event.srcElement)
+            // allButtonOptionDescendants.forEach((el) => {
+            //     if (el === event.srcElement) { 
+            //         console.log(true) 
+            //     }
+            // })
         }
-        
         window.addEventListener('click', checkButtonClick)
 
         return () => {
