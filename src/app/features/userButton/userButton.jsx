@@ -8,6 +8,7 @@ const UserButton = () => {
     const optionsVisible = useSelector(optionsVisibleSelector)
 
     const handleUserButtonClick = (event) => {
+        event.stopPropagation()
         dispatch(toggleOptionList())
         //const dropdownContent = document.getElementById('dropdown-content')
         //dropdownContent.style.display = 'block'

@@ -1,13 +1,30 @@
 import { createSlice, createAsyncThunk, isFulfilled } from "@reduxjs/toolkit";
 
-const getUserInfo = createAsyncThunk(
-    'userButton/getUserInfo',
-    async (arg, thunkAPI) => { //arg is equal to the first argument passes to the thunk action creator itself getUserInfo('user'), arg would equal 'user'
-                               // thinkAPI includes the stores dispatch and getState functions
-        // fetch and return data here
+const fetchUserInfo = createAsyncThunk( // this can be called in main too to load as early as possible
+    'app/fetchUserInfo',
+    async (arg, thunkAPI) => {
+
+})
+
+/* 
+example async function:
+
+  const onSavePostClicked = async () => {
+    if (canSave) {
+      try {
+        setAddRequestStatus('pending')
+        await dispatch(addNewPost({ title, content, user: userId })).unwrap()
+        setTitle('')
+        setContent('')
+        setUserId('')
+      } catch (err) {
+        console.error('Failed to save the post: ', err)
+      } finally {
+        setAddRequestStatus('idle')
+      }
     }
-    
-) 
+  }
+*/
 
 /*
 create async thunk will create lifecycle states for us
@@ -22,11 +39,13 @@ create async thunk will create lifecycle states for us
 */
 
 const initialState = {
-    userName: '',
-    iconURL: '',
     optionsVisible: false,
-    isLoading: false,
-    hasError: false
+    iconImg: '',
+    id: '',
+    name: '',
+    snoovatarImg: '',
+    status: 'pending',
+    error: null
 }
 
 const userButtonSlice = createSlice({
@@ -34,31 +53,28 @@ const userButtonSlice = createSlice({
     initialState: initialState,
     reducers: {
         toggleOptionList: (state, action) => {
-            console.log(state.optionsVisible)
-            console.log(action)
             state.optionsVisible ? state.optionsVisible = false : state.optionsVisible = true
         }
     },
-    extraReducers: {
-        [getUserInfo.pending]: (state, action) => {
-            state.isLoading = true
-            state.hasError = false
-        },
-        [getUserInfo.fulfilled]: (state, action) => {
-            // set username and iconurl using async thunk
-            // set loading and error to false
-            state.isLoading = false
-            state.hasError = false
-        },
-        [getUserInfo.rejected]: (state, action) => {
-            state.isLoading = false
-            state.hasError = true
-        }
+    extraReducers(builder) {
+        builder
+            .addCase('fetchUserInfo.pending', (state, action) => { // can be skipped if there is no loading state
+                state.status = 'loading'
+            })
+            .addCase('fetchUserInfo.fulfilled', (state, action) => {
+                state.status = 'fulfilled'
+                // add user info to redux state
+            })
+            .addCase('fetchUserInfo.rejected', (state, action) => { // can be skipped if you only care about a successful response
+                state.status = 'rejected'
+                state.error = action.error.message // error info
+            })
     }
 })
 
 const optionsVisibleSelector = (state) =>  state.userButton.optionsVisible
 
+export { fetchUserInfo }
 export { optionsVisibleSelector }
 export const { toggleOptionList } = userButtonSlice.actions
 export default userButtonSlice.reducer

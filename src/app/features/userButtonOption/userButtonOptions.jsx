@@ -1,28 +1,23 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import './userButtonOptions.css'
 import ThemeButton from '../themeButton/themeButton'
+import { toggleOptionList } from '../userButton/userButtonSlice'
 
 const UserButtonOptions = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const checkButtonClick = (event) => {
-            console.log(event.target.closest('#dropdown-content')) // use to check if the element clicked is a descendant
-
-
-            // console.log(allButtonOptionDescendants)
-            // console.log(event.srcElement)
-            // allButtonOptionDescendants.forEach((el) => {
-            //     if (el === event.srcElement) { 
-            //         console.log(true) 
-            //     }
-            // })
+            if (!event.target.closest('#dropdown-content')) {
+                dispatch(toggleOptionList())
+            }
         }
         window.addEventListener('click', checkButtonClick)
 
         return () => {
-            console.log('unmounted')
             window.removeEventListener('click', checkButtonClick)
         }
     }, [])
