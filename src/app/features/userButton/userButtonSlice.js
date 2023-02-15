@@ -1,42 +1,13 @@
 import { createSlice, createAsyncThunk, isFulfilled } from "@reduxjs/toolkit";
 
 const fetchUserInfo = createAsyncThunk( // this can be called in main too to load as early as possible
-    'app/fetchUserInfo',
-    async (arg, thunkAPI) => {
-
-})
-
-/* 
-example async function:
-
-  const onSavePostClicked = async () => {
-    if (canSave) {
-      try {
-        setAddRequestStatus('pending')
-        await dispatch(addNewPost({ title, content, user: userId })).unwrap()
-        setTitle('')
-        setContent('')
-        setUserId('')
-      } catch (err) {
-        console.error('Failed to save the post: ', err)
-      } finally {
-        setAddRequestStatus('idle')
-      }
-    }
-  }
-*/
-
-/*
-create async thunk will create lifecycle states for us
-    - 'resourceType/actionType/pending'
-	- 'resourceType/actionType/fulfilled'
-	- 'resourceType/actionType/rejected'
-        referenced as:
-    - fetchUserById.pending
-	- fetchUserById.fulfilled
-	- fetchUserById.rejected
-
-*/
+    'userButton/fetchUserInfo',
+    async () => {
+        const redditToken = localStorage.getItem('redditToken')
+        const response = await fetch('http://localhost:5173/api/v1/me', { headers: { 'authorization': `bearer ${redditToken}`} })
+        return await response.json()
+    },
+)
 
 const initialState = {
     optionsVisible: false,
@@ -50,7 +21,7 @@ const initialState = {
 
 const userButtonSlice = createSlice({
     name: 'userButton',
-    initialState: initialState,
+    initialState,
     reducers: {
         toggleOptionList: (state, action) => {
             state.optionsVisible ? state.optionsVisible = false : state.optionsVisible = true
@@ -58,14 +29,18 @@ const userButtonSlice = createSlice({
     },
     extraReducers(builder) {
         builder
-            .addCase('fetchUserInfo.pending', (state, action) => { // can be skipped if there is no loading state
+            .addCase(fetchUserInfo.pending, (state, action) => { // can be skipped if there is no loading state
                 state.status = 'loading'
             })
-            .addCase('fetchUserInfo.fulfilled', (state, action) => {
+            .addCase(fetchUserInfo.fulfilled, (state, { payload }) => {
                 state.status = 'fulfilled'
-                // add user info to redux state
+                state.iconImg = payload.icon_img
+                state.id = payload.id
+                state.name = payload.name
+                state.snoovatarImg = payload.snoovatar_img
+                console.log(payload)
             })
-            .addCase('fetchUserInfo.rejected', (state, action) => { // can be skipped if you only care about a successful response
+            .addCase(fetchUserInfo.rejected, (state, action) => { // can be skipped if you only care about a successful response
                 state.status = 'rejected'
                 state.error = action.error.message // error info
             })

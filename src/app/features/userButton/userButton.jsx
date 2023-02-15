@@ -1,11 +1,22 @@
 import UserButtonOptions from '../userButtonOption/userButtonOptions'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { optionsVisibleSelector, toggleOptionList } from './userButtonSlice'
+import { optionsVisibleSelector, toggleOptionList, fetchUserInfo } from './userButtonSlice'
 import './userButton.css'
 
 const UserButton = () => {
     const dispatch = useDispatch()
     const optionsVisible = useSelector(optionsVisibleSelector)
+
+    useEffect(() => {
+        (async () => {
+            try {
+                await dispatch(fetchUserInfo()).unwrap()
+            } catch (error) {
+                console.log(error)
+            }
+        })()
+    }, [])
 
     const handleUserButtonClick = (event) => {
         event.stopPropagation()
