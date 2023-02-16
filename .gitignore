@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # API file with private ID's
-reddit-api.js
+# reddit-api.js
 
 # Coverage test folder
 coverage
