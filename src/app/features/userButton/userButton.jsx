@@ -17,7 +17,7 @@ const UserButton = () => {
     return (
         <div id='user-dropdown'>
             <button id='user-button' title={userInfo.name} onClick={handleUserButtonClick}>
-                {fetchStatus === 'fulfilled' ? <img src={userInfo.correctedIconImgURL} /> : <div className='loading-gradient'></div>}
+                {fetchStatus === 'fulfilled' ? <img src={userInfo.correctedIconImgURL} /> : <span id="loader"></span>}
             </button>   
             {optionsVisible && <UserButtonOptions />}
         </div>
