@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { redditAPI } from "../../api/reddit-api"
-import { useSearchParams } from "react-router-dom"
+import helpers from "../../functions/helper-functions"
 import './login.css'
 
 const Login = () => {
@@ -11,7 +11,8 @@ const Login = () => {
 
     useEffect(() => {
         const redditToken = localStorage.getItem('redditToken')
-        if (!redditToken || redditToken === 'undefined') { // Make sure token is not expired
+        const isExpired = helpers.checkTokenExpiration()
+        if (!redditToken || redditToken === 'undefined' || isExpired) { // Make sure token is not expired
             if (!searchParams.toString()) {
                 const { desktopAuthURI, state, } = redditAPI.generateAuthorizationURI()
                 localStorage.setItem('authState', state)

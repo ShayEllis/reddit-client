@@ -4,10 +4,11 @@ const initialState = {}
 
 const searchbarSlice = createSlice({
     name: 'searchbar',
-    initialState: initialState,
+    initialState,
     reducers: {
 
     }
 })
 
+//export { } = searchbarSlice.actions
 export default searchbarSlice.reducer

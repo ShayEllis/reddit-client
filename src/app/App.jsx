@@ -4,10 +4,12 @@ import { Outlet, redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchUserInfo } from './features/userButton/userButtonSlice'
+import helpers from './functions/helper-functions'
 
-const appLoader = ({ request }) => {
-  //check localStorage for Api token and experation time -> send to login page if needed?
-  if (!localStorage.getItem('redditToken')) {
+const appLoader = () => {
+  const isExpired = helpers.checkTokenExpiration()
+
+  if (!localStorage.getItem('redditToken') || isExpired) {
     return redirect('/')
   }
   return null

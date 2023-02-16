@@ -69,15 +69,6 @@ const redditAPI = {
             console.error(error)
         }
     },
-
-
-    // 'best' listings
-    // 'hot' listing
-    // 'new' listings
-    // 'top' listings
 }
 
-
-
 export { redditAPI }
-

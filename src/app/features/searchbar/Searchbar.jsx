@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './searchbar.css'
 
 const Searchbar = () => {
-    const [search, setSearch] = useState("")
+    const [search, setSearch] = useState("")  // Move to redux
     
     const handleSearchbarFocus = (event) => {
         event.target.classList.remove('searchbar-inactive')

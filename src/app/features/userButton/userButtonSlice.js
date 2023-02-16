@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
 
-const fetchUserInfo = createAsyncThunk( // this can be called in main too to load as early as possible
+const fetchUserInfo = createAsyncThunk(
     'userButton/fetchUserInfo',
     async () => {
         const redditToken = localStorage.getItem('redditToken')
-        const response = await fetch('http://localhost:5173/api/v1/me', { headers: { 'authorization': `bearer ${redditToken}`} })
+        const response = await fetch('http://localhost:5173/api/v1/me', { headers: { 'authorization': `bearer ${redditToken}`} }) //Needed to use a proxy to avoid CORS error, request could not be sent from localhost root
         return await response.json()
     },
 )
@@ -29,7 +29,7 @@ const userButtonSlice = createSlice({
     },
     extraReducers(builder) {
         builder
-            .addCase(fetchUserInfo.pending, (state, action) => {
+            .addCase(fetchUserInfo.pending, (state) => {
                 state.status = 'loading'
             })
             .addCase(fetchUserInfo.fulfilled, (state, { payload }) => {

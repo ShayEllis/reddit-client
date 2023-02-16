@@ -8,15 +8,12 @@ import './reset.css'
 import appRoutes from './appRoutes'
 
 // Create a BrowserRouter with the imported routes
-function main() {
-  const router = createBrowserRouter(appRoutes)
+const router = createBrowserRouter(appRoutes)
 
-  ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    </React.StrictMode>,
-  )
-}
-main()
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>,
+)
