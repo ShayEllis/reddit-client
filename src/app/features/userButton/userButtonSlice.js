@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, isFulfilled } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
 
 const fetchUserInfo = createAsyncThunk( // this can be called in main too to load as early as possible
     'userButton/fetchUserInfo',
@@ -10,11 +10,11 @@ const fetchUserInfo = createAsyncThunk( // this can be called in main too to loa
 )
 
 const initialState = {
-    optionsVisible: false,
-    iconImg: '',
+    isDropdownVisible: false,
+    iconImgURL: '',
     id: '',
     name: '',
-    snoovatarImg: '',
+    snoovatarImgURL: '',
     status: 'pending',
     error: null
 }
@@ -24,32 +24,42 @@ const userButtonSlice = createSlice({
     initialState,
     reducers: {
         toggleOptionList: (state, action) => {
-            state.optionsVisible ? state.optionsVisible = false : state.optionsVisible = true
+            state.isDropdownVisible ? state.isDropdownVisible = false : state.isDropdownVisible = true
         }
     },
     extraReducers(builder) {
         builder
-            .addCase(fetchUserInfo.pending, (state, action) => { // can be skipped if there is no loading state
+            .addCase(fetchUserInfo.pending, (state, action) => {
                 state.status = 'loading'
             })
             .addCase(fetchUserInfo.fulfilled, (state, { payload }) => {
                 state.status = 'fulfilled'
-                state.iconImg = payload.icon_img
+                state.iconImgURL = payload.icon_img
                 state.id = payload.id
                 state.name = payload.name
-                state.snoovatarImg = payload.snoovatar_img
-                console.log(payload)
+                state.snoovatarImgURL = payload.snoovatar_img
             })
-            .addCase(fetchUserInfo.rejected, (state, action) => { // can be skipped if you only care about a successful response
+            .addCase(fetchUserInfo.rejected, (state, action) => {
                 state.status = 'rejected'
-                state.error = action.error.message // error info
+                state.error = action.error.message
             })
     }
 })
 
-const optionsVisibleSelector = (state) =>  state.userButton.optionsVisible
+const selectIsDropdownVisible = (state) =>  state.userButton.isDropdownVisible
+
+const selectIconImgURL = (state) => state.userButton.iconImgURL
+const selectName = (state) => state.userButton.name
+const selectStatus = (state) => state.userButton.status
+const selectUserInfo = createSelector([selectIconImgURL, selectName, selectStatus], (iconImgURL, name) => {
+    const correctedIconImgURL = iconImgURL.replace(/&amp;/ig, "&")
+    return {
+        correctedIconImgURL,
+        name
+    }
+})
 
 export { fetchUserInfo }
-export { optionsVisibleSelector }
+export { selectIsDropdownVisible, selectUserInfo, selectStatus }
 export const { toggleOptionList } = userButtonSlice.actions
 export default userButtonSlice.reducer
