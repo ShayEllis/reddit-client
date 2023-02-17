@@ -60,7 +60,7 @@ const redditAPI = {
             body: `grant_type=authorization_code&code=${code}&redirect_uri=${redirectURI}`
         }
         try {
-            const response = await fetch('http://localhost:5173/api/request', header) //Needed to use a proxy to avoid CORS error, request could not be sent from localhost root
+            const response = await fetch('https://www.reddit.com/api/v1/access_token', header)
             if (!response.ok) {
                 throw new Error(`Failed to fetch access token: ${response.status} - ${response.statusText}`)
             }

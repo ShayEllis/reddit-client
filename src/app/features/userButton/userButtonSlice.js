@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
 
-const fetchUserInfo = createAsyncThunk(
-    'userButton/fetchUserInfo',
+const fetchUserInfo = createAsyncThunk('userButton/fetchUserInfo',
     async () => {
         const redditToken = localStorage.getItem('redditToken')
-        const response = await fetch('http://localhost:5173/api/v1/me', { headers: { 'authorization': `bearer ${redditToken}`} }) //Needed to use a proxy to avoid CORS error, request could not be sent from localhost root
+        const response = await fetch('https://oauth.reddit.com/api/v1/me', { headers: { 'authorization': `bearer ${redditToken}`} })
         return await response.json()
     },
 )

@@ -51,8 +51,7 @@
 }
 #loader:after {
     color: var(--title-text);
-    transform: rotateY(70deg);
-    animation-delay: .4s;
+    transform: rotateY(70deg) rotateZ(180deg);
 }
 
 @keyframes spin {

@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-      proxy: {
+      proxy: { // ***dont need these***
         '/api/request': {
           target: 'https://www.reddit.com/api/v1/access_token',
           changeOrigin: true,
