@@ -1,6 +1,11 @@
+import { useEffect } from 'react'
 import './post.css'
+import dashjs from 'dashjs'
 
 const Post = () => {
+    const videoSRC = "https://v.redd.it/19rcq2wrzyia1/DASHPlaylist.mpd?a=1679332414%2CN2Q0YjY0NTk0M2VmOWMwMjk4NjkyMDE1MTJlODgxZWNhOTc3YTFlZTJjNDE0NmU5MDVmN2U2MjFkMDFlYTA1Yg%3D%3D&amp;v=1&amp;f=sd"
+    const fallbackSRC = "https://v.redd.it/19rcq2wrzyia1/DASH_1080.mp4?source=fallback"
+
     return (
         <article className='post-container'> {/* Generate with Reddit API */}
             <div id='post-header'>
@@ -19,7 +24,11 @@ const Post = () => {
                 </div>
             </div>
             <div id='post-content'>
-
+                <div id='video-container'>
+                    <video data-dashjs-player id='video-player' src={videoSRC} controls>
+                        <source src={fallbackSRC} type="video/mp4" />
+                    </video>
+                </div>
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>

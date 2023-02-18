@@ -7,7 +7,7 @@ const Searchbar = () => {
     const dispatch = useDispatch()
     const [search, setSearch] = useState("")  // Move to redux
 
-    dispatch(searchReddit())
+    dispatch(searchReddit({searchStr: 'cats'}))
     
     const handleSearchbarFocus = (event) => {
         event.target.classList.remove('searchbar-inactive')

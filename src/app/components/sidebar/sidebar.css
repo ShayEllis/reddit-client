@@ -66,6 +66,7 @@
     width: 100%;
     padding: 15px;
     width: auto;
+    overflow: hidden;
 }
 
 /* List items */
@@ -77,6 +78,7 @@
     text-align: center;
     background-color:var(--buttons);
     border: 1px solid black;
+    overflow: hidden;
 }
 .sidebar-item:hover {
     background-color: var(--hover-bg);
