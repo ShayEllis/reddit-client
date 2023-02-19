@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './searchbar.css'
-import { searchReddit } from './searchbarSlice'
-import { useDispatch } from 'react-redux'
+import { searchReddit, selectBefore, selectAfter,} from './searchbarSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Searchbar = () => {
     const dispatch = useDispatch()
-    const [search, setSearch] = useState("")  // Move to redux
+    const [search, setSearch] = useState('')  // Move to redux
 
-    dispatch(searchReddit({searchStr: 'cats'}))
+    useEffect(() => {
+        dispatch(searchReddit({searchStr: 'dogs'}))
+    }, [])
     
     const handleSearchbarFocus = (event) => {
         event.target.classList.remove('searchbar-inactive')
