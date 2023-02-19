@@ -9,13 +9,12 @@ const Board = () => {
     const searchResults = useSelector(selectChildren)
     const [posts, setPosts] = useState([])
     //console.log(searchResults)
-    console.log(posts)
+    //console.log(posts)
 
 
     useEffect(() => {
         const result = searchResults.map((item) => {
-            const videoSRC = helpers.correctURL(item.media?.reddit_video.dash_url)
-            console.log(videoSRC)
+            const videoSRC = helpers.correctURL(item.media?.reddit_video.fallback_url)
             return <Post key={item.id} result={item} videoSRC={videoSRC} />
         })
         setPosts(result)

@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 import './post.css'
-import VideoPlayer from '../videoPlayer/videoPlayer'
 
 const Post = (props) => {
     //console.log(props.result)
-    console.log(props.videoSRC)
+    //console.log(props.videoSRC)
+
+    useEffect(() => {
+    }, [])
 
     return (
         <article className='post-container'> {/* Generate with Reddit API */}
@@ -24,7 +26,11 @@ const Post = (props) => {
                 </div>
             </div>
             <div id='post-content'>
-                {props.videoSRC && <VideoPlayer key={props.key} videoSRC={props.videoSRC} />}
+                {props.videoSRC &&           
+                    <div id='video-container'>
+                        <video id='video-player' src={props.videoSRC} controls></video>
+                    </div>
+                }
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>
