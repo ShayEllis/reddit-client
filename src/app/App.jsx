@@ -1,9 +1,7 @@
 import Header from './components/header/Header'
 import Sidebar from './components/sidebar/sidebar'
 import { Outlet, redirect } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { fetchUserInfo } from './features/userButton/userButtonSlice'
 import helpers from './functions/helper-functions'
 
 const appLoader = () => {
@@ -16,16 +14,13 @@ const appLoader = () => {
 }
 
 function App () {
-  const dispatch = useDispatch()
 
   useEffect(() => {
-    (async () => {
-      try {
-          await dispatch(fetchUserInfo()).unwrap()
-      } catch (error) {
-          console.error(error.message)
-      }
-    })()
+    const importModule = async () => {
+      const module = await import('../../node_modules/dashjs/dist/dash.all.min.js')
+      console.log(module)
+    };
+    importModule();
   })
 
   return (

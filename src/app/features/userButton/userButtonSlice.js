@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
-import Helpers from "../../functions/helper-functions";
+import helpers from "../../functions/helper-functions";
 
 const fetchUserInfo = createAsyncThunk('userButton/fetchUserInfo',
     async () => {
@@ -52,7 +52,7 @@ const selectIconImgURL = (state) => state.userButton.iconImgURL
 const selectName = (state) => state.userButton.name
 const selectStatus = (state) => state.userButton.status
 const selectUserInfo = createSelector([selectIconImgURL, selectName, selectStatus], (iconImgURL, name) => {
-    const correctedIconImgURL = Helpers.correctURL(iconImgURL)
+    const correctedIconImgURL = helpers.correctURL(iconImgURL)
     return {
         correctedIconImgURL,
         name

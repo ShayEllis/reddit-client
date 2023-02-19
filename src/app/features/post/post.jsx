@@ -1,12 +1,10 @@
 import { useEffect } from 'react'
 import './post.css'
-import Helpers from '../../functions/helper-functions'
-import dashjs from 'dashjs'
+import VideoPlayer from '../videoPlayer/videoPlayer'
 
 const Post = (props) => {
-    console.log(props.result)
-    console.log(props.result.media?.reddit_video.dash_url)
-    const videoSRC = Helpers.correctURL(props.result.media?.reddit_video.dash_url)
+    //console.log(props.result)
+    console.log(props.videoSRC)
 
     return (
         <article className='post-container'> {/* Generate with Reddit API */}
@@ -26,11 +24,7 @@ const Post = (props) => {
                 </div>
             </div>
             <div id='post-content'>
-                {videoSRC &&               
-                <div id='video-container'>
-                    <video data-dashjs-player id='video-player' src={videoSRC} controls></video>
-                </div>
-                }
+                {props.videoSRC && <VideoPlayer key={props.key} videoSRC={props.videoSRC} />}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>

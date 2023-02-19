@@ -1,6 +1,7 @@
+import { useEffect } from 'react'
 import UserButtonOptions from '../userButtonOption/userButtonOptions'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectIsDropdownVisible, selectUserInfo, toggleOptionList, selectStatus } from './userButtonSlice'
+import { selectIsDropdownVisible, selectUserInfo, toggleOptionList, selectStatus, fetchUserInfo } from './userButtonSlice'
 import './userButton.css'
 
 const UserButton = () => {
@@ -8,6 +9,16 @@ const UserButton = () => {
     const optionsVisible = useSelector(selectIsDropdownVisible)
     const userInfo = useSelector(selectUserInfo)
     const fetchStatus = useSelector(selectStatus)
+
+    useEffect(() => {
+        (async () => {
+            try {
+                await dispatch(fetchUserInfo()).unwrap()
+            } catch (error) {
+                console.error(error.message)
+            }
+        })()
+    }, [])
 
     const handleUserButtonClick = (event) => {
         event.stopPropagation()
