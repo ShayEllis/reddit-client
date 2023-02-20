@@ -5,7 +5,6 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
         const redditToken = localStorage.getItem('redditToken')
         const response = await fetch(`https://oauth.reddit.com/search?limit=10&sort=${sort}&q=${searchStr}`, { headers: { 'authorization': `bearer ${redditToken}`} })
         const jsonResponse = await response.json()
-
         const children = jsonResponse.data.children.map((child) => { 
             return {
                 author: child.data.author,
@@ -32,6 +31,7 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
     //before - Example: null
 )
 const initialState = {
+    searchValue: '',
     after: '',
     before: '',
     children: []
@@ -41,13 +41,16 @@ const searchbarSlice = createSlice({
     name: 'searchbar',
     initialState,
     reducers: {
-
+        changeSearchValue(state, action) {
+            state.searchValue = action.payload
+        }
     },
     extraReducers(builder) {
         builder
             .addCase(searchReddit.fulfilled, (state, action) => {
-                if (state.before !== action.payload.before) {
-                    state.children.push(...action.payload.children)
+                console.log(action.payload)
+                if (state.after !== action.payload.after) {
+                    state.children = action.payload.children
                 }
                 state.after = action.payload.after
                 state.before = action.payload.before
@@ -58,8 +61,9 @@ const searchbarSlice = createSlice({
 const selectAfter = (state) => state.searchbar.after
 const selectBefore = (state) => state.searchbar.before
 const selectChildren = (state) => state.searchbar.children
+const selectSearchValue = (state) => state.searchbar.searchValue
 
-export { selectAfter, selectBefore, selectChildren }
+export { selectAfter, selectBefore, selectChildren, selectSearchValue }
 export { searchReddit }
-//export { } = searchbarSlice.actions
+export const { changeSearchValue } = searchbarSlice.actions
 export default searchbarSlice.reducer
