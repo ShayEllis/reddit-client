@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import './post.css'
+import VideoPlayer from '../videoPlayer/videoPlayer'
 
 const Post = (props) => {
     //console.log(props.result)
     //console.log(props.videoSRC)
 
     useEffect(() => {
+
     }, [])
 
     return (
@@ -26,11 +28,7 @@ const Post = (props) => {
                 </div>
             </div>
             <div id='post-content'>
-                {props.videoSRC &&           
-                    <div id='video-container'>
-                        <video id='video-player' src={props.videoSRC} controls></video>
-                    </div>
-                }
+                {props.videoSRC && <VideoPlayer src={props.videoSRC} />}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>

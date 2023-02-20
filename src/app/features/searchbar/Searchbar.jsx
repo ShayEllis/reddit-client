@@ -8,7 +8,7 @@ const Searchbar = () => {
     const [search, setSearch] = useState('')  // Move to redux
 
     useEffect(() => {
-        dispatch(searchReddit({searchStr: 'dogs'}))
+        dispatch(searchReddit({searchStr: 'cats videos'}))
     }, [])
     
     const handleSearchbarFocus = (event) => {
