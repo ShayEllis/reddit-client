@@ -24,7 +24,7 @@ const Searchbar = () => {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault() // may not need if auto searching as you type
+        event.preventDefault()
         dispatch(searchReddit({searchStr: searchValue}))
     }
 

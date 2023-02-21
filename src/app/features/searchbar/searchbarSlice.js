@@ -34,7 +34,9 @@ const initialState = {
     searchValue: '',
     after: '',
     before: '',
-    children: []
+    children: [],
+    status: 'pending',
+    error: null
 }
 
 const searchbarSlice = createSlice({
@@ -47,6 +49,9 @@ const searchbarSlice = createSlice({
     },
     extraReducers(builder) {
         builder
+            .addCase(searchReddit.pending, (state) => {
+                state.status = 'pending'
+            })
             .addCase(searchReddit.fulfilled, (state, action) => {
                 console.log(action.payload)
                 if (state.after !== action.payload.after) {
@@ -54,6 +59,11 @@ const searchbarSlice = createSlice({
                 }
                 state.after = action.payload.after
                 state.before = action.payload.before
+                state.status = 'fulfilled'
+            })
+            .addCase(searchReddit.rejected, (state, action) => {
+                state.status = 'rejected'
+                state.error = action.error.message
             })
     }
 })
@@ -62,8 +72,9 @@ const selectAfter = (state) => state.searchbar.after
 const selectBefore = (state) => state.searchbar.before
 const selectChildren = (state) => state.searchbar.children
 const selectSearchValue = (state) => state.searchbar.searchValue
+const selectStatus = (state) => state.searchbar.status
 
-export { selectAfter, selectBefore, selectChildren, selectSearchValue }
+export { selectAfter, selectBefore, selectChildren, selectSearchValue, selectStatus }
 export { searchReddit }
 export const { changeSearchValue } = searchbarSlice.actions
 export default searchbarSlice.reducer

@@ -5,7 +5,8 @@ const fetchUserInfo = createAsyncThunk('userButton/fetchUserInfo',
     async () => {
         const redditToken = localStorage.getItem('redditToken')
         const response = await fetch('https://oauth.reddit.com/api/v1/me', { headers: { 'authorization': `bearer ${redditToken}`} })
-        return await response.json()
+        const jsonResponse = await response.json()
+        return jsonResponse
     },
 )
 
@@ -23,14 +24,14 @@ const userButtonSlice = createSlice({
     name: 'userButton',
     initialState,
     reducers: {
-        toggleOptionList: (state, action) => {
-            state.isDropdownVisible ? state.isDropdownVisible = false : state.isDropdownVisible = true
+        toggleOptionList: (state) => {
+            state.isDropdownVisible = !state.isDropdownVisible
         }
     },
     extraReducers(builder) {
         builder
             .addCase(fetchUserInfo.pending, (state) => {
-                state.status = 'loading'
+                state.status = 'pending'
             })
             .addCase(fetchUserInfo.fulfilled, (state, { payload }) => {
                 state.status = 'fulfilled'
@@ -47,10 +48,10 @@ const userButtonSlice = createSlice({
 })
 
 const selectIsDropdownVisible = (state) =>  state.userButton.isDropdownVisible
-
 const selectIconImgURL = (state) => state.userButton.iconImgURL
 const selectName = (state) => state.userButton.name
 const selectStatus = (state) => state.userButton.status
+
 const selectUserInfo = createSelector([selectIconImgURL, selectName, selectStatus], (iconImgURL, name) => {
     const correctedIconImgURL = helpers.correctURL(iconImgURL)
     return {

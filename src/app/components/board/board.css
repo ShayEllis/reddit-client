@@ -10,3 +10,36 @@
     min-width: 372px;
     overflow: auto;
 }
+
+/* Board loader */
+
+.board-loader {
+    width: 500px;
+    height: 400px;
+    position: relative;
+    background-color: var(--content-bg);
+    border-radius: 10px;
+  }
+.board-loader::after {
+    content: '';
+    width: calc(100% - 30px);
+    height: calc(100% - 15px);
+    top: 15px;
+    left: 15px;
+    position: absolute;
+    background-image: linear-gradient(90deg, transparent, var(--content-bg) 50%, transparent 100%),
+        linear-gradient(var(--hover-bg) 30px, transparent 0),
+        linear-gradient(var(--hover-bg) 200px, transparent 0),
+        linear-gradient(var(--hover-bg) 30px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 75px 375px, 20% 30px, 100% 200px, 70% 30px;
+    background-position: -150px 0, left 0, center 45px, left 340px;
+    animation: boardloader 1s linear infinite;
+}
+
+@keyframes boardloader {
+    to {
+        background-position: 550px 0, left 0, center 45px, left 340px;
+    }
+}
+  
