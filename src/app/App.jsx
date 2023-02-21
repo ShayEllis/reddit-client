@@ -1,6 +1,7 @@
 import Header from './components/header/Header'
 import Sidebar from './components/sidebar/sidebar'
-import { Outlet, redirect } from 'react-router-dom'
+import Board from '../app/components/board/board'
+import { redirect } from 'react-router-dom'
 import helpers from './functions/helper-functions'
 
 const appLoader = () => {
@@ -17,7 +18,7 @@ function App () {
     <>
       <Header />
       <Sidebar />
-      <Outlet />
+      <Board />
     </>
   )
 }

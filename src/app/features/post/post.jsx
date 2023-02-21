@@ -1,10 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import './post.css'
 import VideoPlayer from '../videoPlayer/videoPlayer'
+import helpers from '../../functions/helper-functions'
+
 
 const Post = (props) => {
-    //console.log(props.result)
-    //console.log(props.videoSRC)
+    const redditVideoURL = helpers.correctURL(props.post.media?.reddit_video?.dash_url)
+    const youtubeVideo = helpers.correctURL(props.post.media?.oembed?.html)
 
     useEffect(() => {
 
@@ -28,7 +30,7 @@ const Post = (props) => {
                 </div>
             </div>
             <div id='post-content'>
-                {props.videoSRC && <VideoPlayer src={props.videoSRC} />}
+                {(redditVideoURL || youtubeVideo) && <VideoPlayer redditSRC={redditVideoURL} youtubeElement={youtubeVideo} />}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>

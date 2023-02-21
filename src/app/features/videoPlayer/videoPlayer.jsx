@@ -4,17 +4,20 @@ import dashjs from 'dashjs'
 
 const VideoPlayer = (props) => {
     const videoRef = useRef(null)
+    const videoContainerRef = useRef(null)
 
     useEffect(() => {
-        const src = props.src
-        const video = videoRef.current
-        const player = dashjs.MediaPlayer().create()
-        player.initialize(video, src, false)
+        if (props.redditSRC) {
+            const player = dashjs.MediaPlayer().create()
+            player.initialize(videoRef.current, props.redditSRC, false)
+         } else if (props.youtubeElement) {
+            videoContainerRef.current.innerHTML = props.youtubeElement
+        }
     }, [])
 
     return (
-        <div id='video-container'>
-            <video id='video-player' ref={videoRef} controls></video>
+        <div id='video-container' ref={videoContainerRef}>
+            {props.redditSRC && <video id='video-player' ref={videoRef} controls></video>}
         </div>
     )
 }

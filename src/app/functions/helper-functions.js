@@ -6,7 +6,7 @@ const helpers = {
     },
     correctURL (url) {
         if (url) {
-            return url.replace(/&amp;/ig, "&")
+            return url.replace(/&amp;/ig, "&").replace(/&lt;/ig, '<').replace(/&gt;/ig, '>')
         }
     }
 }

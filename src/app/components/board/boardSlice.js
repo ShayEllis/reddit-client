@@ -7,6 +7,7 @@ const boardSlice = createSlice({
     name: 'board',
     initialState,
     reducers: {
+        
     }
 })
 
