@@ -17,7 +17,8 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
                 subreddit_name_prefixed: child.data.subreddit_name_prefixed,
                 ups: child.data.ups,
                 url: child.data.url,
-                title: child.data.title
+                title: child.data.title,
+                thumbnail: child.data.thumbnail
             }
         })
         

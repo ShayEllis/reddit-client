@@ -8,7 +8,6 @@ const Board = () => {
     const searchResults = useSelector(selectChildren)
     //console.log(searchResults)
     const searchStatus = useSelector(selectStatus)
-    console.log(searchStatus)
 
     useEffect(() => {
 
@@ -16,22 +15,23 @@ const Board = () => {
 
     return (
         <main id='board-container'>
-            {searchStatus === 'fulfilled' ? searchResults.map((post) => {
-                    return <Post key={post.id} post={post} />
-                })
-            :
-            <>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-                <div className='board-loader'></div>
-            </>}
+            {searchStatus === 'fulfilled' 
+                ? searchResults.map((post) => {
+                        return <Post key={post.id} post={post} />
+                    })
+                :
+                <>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                    <div className='board-loader'></div>
+                </>}
         </main>
     )
 }

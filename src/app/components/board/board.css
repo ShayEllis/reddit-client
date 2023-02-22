@@ -12,7 +12,6 @@
 }
 
 /* Board loader */
-
 .board-loader {
     width: 500px;
     height: 400px;
@@ -36,10 +35,8 @@
     background-position: -150px 0, left 0, center 45px, left 340px;
     animation: boardloader 1s linear infinite;
 }
-
 @keyframes boardloader {
     to {
         background-position: 550px 0, left 0, center 45px, left 340px;
     }
 }
-  

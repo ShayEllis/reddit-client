@@ -1,14 +1,13 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import './post.css'
-import VideoPlayer from '../videoPlayer/videoPlayer'
+import Media from '../media/media'
 import helpers from '../../functions/helper-functions'
 
 
 const Post = (props) => {
-    const redditVideoURL = helpers.correctURL(props.post.media?.reddit_video?.dash_url)
-    const youtubeVideo = helpers.correctURL(props.post.media?.oembed?.html)
 
     useEffect(() => {
+        // Imgur video - redirect to url - not in media
 
     }, [])
 
@@ -30,7 +29,7 @@ const Post = (props) => {
                 </div>
             </div>
             <div id='post-content'>
-                {(redditVideoURL || youtubeVideo) && <VideoPlayer redditSRC={redditVideoURL} youtubeElement={youtubeVideo} />}
+                {(props.media) && <Media media={props.post.media} url={props.post.url} />}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>

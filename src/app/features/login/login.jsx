@@ -16,7 +16,7 @@ const Login = () => {
             if (!searchParams.toString()) {
                 const { desktopAuthURI, state, } = redditAPI.generateAuthorizationURI()
                 localStorage.setItem('authState', state)
-                window.location.href = desktopAuthURI
+                window.location.replace(desktopAuthURI)
             } else if (searchParams.toString()) {
                 const state = localStorage.getItem('authState')
                 const responseResult = redditAPI.checkApiResponse(searchParams, state)
