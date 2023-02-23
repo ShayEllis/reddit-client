@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import './post.css'
 import Media from '../media/media'
-import helpers from '../../functions/helper-functions'
-
 
 const Post = (props) => {
 
@@ -29,7 +27,7 @@ const Post = (props) => {
                 </div>
             </div>
             <div id='post-content'>
-                {(props.media) && <Media media={props.post.media} url={props.post.url} />}
+                {props.post.media && <Media media={props.post.media} url={props.post.url} />}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>

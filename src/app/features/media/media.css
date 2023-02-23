@@ -1,8 +1,8 @@
-#video-container {
+#media-container {
     text-align: center;
     width: 100%;
     padding: 5px 5px 2px 5px;
 }
-#video-player {
+#media-container video {
     width: 100%;
 }
