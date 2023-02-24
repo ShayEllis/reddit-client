@@ -6,7 +6,6 @@ import Post from '../../features/post/post'
 
 const Board = () => {
     const searchResults = useSelector(selectChildren)
-    //console.log(searchResults)
     const searchStatus = useSelector(selectStatus)
 
     useEffect(() => {

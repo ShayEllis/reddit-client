@@ -3,7 +3,7 @@ import Sidebar from './components/sidebar/sidebar'
 import Board from './components/board/board'
 import { redirect } from 'react-router-dom'
 import helpers from './functions/helper-functions'
-import { searchReddit } from './features/searchbar/searchbarSlice'
+import { searchReddit, changeSearchValue } from './features/searchbar/searchbarSlice'
 import store from '../root/store'
 
 const appLoader = ({ request }) => {
@@ -16,6 +16,7 @@ const appLoader = ({ request }) => {
   const search = url.searchParams.get('search')
   if (search) {
       store.dispatch(searchReddit({searchStr: search}))
+      store.dispatch(changeSearchValue(search))
   }
   return null
 }

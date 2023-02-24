@@ -14,6 +14,9 @@ const helpers = {
         }
         return correctedURL
     },
+    addLineBreakToText(text) {
+        return text.replace(/[\n]/gi, '<br>')
+    }
 }
 
 export default helpers

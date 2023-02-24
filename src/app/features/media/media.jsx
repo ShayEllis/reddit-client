@@ -13,10 +13,10 @@ const Media = (props) => {
         if (redditVideoURL) {
             const player = dashjs.MediaPlayer().create()
             player.initialize(mediaRef.current, redditVideoURL, false)
-         } else if (youtubeVideo) {
+         } else if (props.media.type === 'youtube.com') {
             mediaContainerRef.current.innerHTML = youtubeVideo
-        }
-        // Twitter - embed url link provided in media
+        } 
+        
     }, [])
 
     return (
@@ -27,3 +27,4 @@ const Media = (props) => {
 }
 
 export default Media
+

@@ -3,8 +3,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 const searchReddit = createAsyncThunk('searchbar/searchReddit',
     async ({searchStr, sort = 'relevance'}) => { //Options for sort (relevance, hot, top, new, comments)
         const redditToken = localStorage.getItem('redditToken')
-        const response = await fetch(`https://oauth.reddit.com/search?limit=10&sort=${sort}&q=${searchStr}`, { headers: { 'authorization': `bearer ${redditToken}`} })
+        const response = await fetch(`https://oauth.reddit.com/search?limit=50&sort=${sort}&q=${searchStr}`, { headers: { 'authorization': `bearer ${redditToken}`} })
         const jsonResponse = await response.json()
+
+        console.log(jsonResponse)
         const children = jsonResponse.data.children.map((child) => { 
             return {
                 author: child.data.author,
@@ -18,9 +20,16 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
                 ups: child.data.ups,
                 url: child.data.url,
                 title: child.data.title,
+                text: child.data.selftext,
                 thumbnail: child.data.thumbnail
             }
         })
+
+                localStorage.setItem('searchResponse', JSON.stringify({
+                    after: jsonResponse.data.after,
+                    before: jsonResponse.data.before,
+                    children
+                }))
         
         return {
             after: jsonResponse.data.after,
@@ -54,7 +63,6 @@ const searchbarSlice = createSlice({
                 state.status = 'pending'
             })
             .addCase(searchReddit.fulfilled, (state, action) => {
-                console.log(action.payload)
                 if (state.after !== action.payload.after) {
                     state.children = action.payload.children
                 }

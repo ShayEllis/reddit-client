@@ -62,6 +62,11 @@
     width: 100%;
     height: 100%;
 }
+#post-content pre {
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 
 /* Bottom of footer, footer */
 #post-footer {
