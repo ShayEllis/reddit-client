@@ -13,24 +13,26 @@ const Board = () => {
     }, [searchResults])
 
     return (
-        <main id='board-container'>
-            {searchStatus === 'fulfilled' 
-                ? searchResults.map((post) => {
-                        return <Post key={post.id} post={post} />
-                    })
-                :
-                <>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                    <div className='board-loader'></div>
-                </>}
+        <main>
+            <section id='board-container'>
+                {searchStatus === 'fulfilled' 
+                    ? searchResults.map((post) => {
+                            return <Post key={post.id} post={post} />
+                        })
+                    :
+                    <>
+                        <div id='board-loader'></div>
+                        <div id='board-loader'></div>
+                        <div id='board-loader'></div>
+                        <div id='board-loader'></div>
+                        <div id='board-loader'></div>
+                        <div id='board-loader'></div>// not taking up 100% width
+                        <div id='board-loader'></div>
+                        <div id='board-loader'></div>
+                        <div id='board-loader'></div>
+                        <div id='board-loader'></div>
+                    </>}
+            </section>
         </main>
     )
 }

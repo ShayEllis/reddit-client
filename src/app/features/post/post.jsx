@@ -13,14 +13,16 @@ const Post = (props) => {
             postText.current.innerHTML = helpers.adjustRedditPostTextHTML(helpers.convertHTMLCodes(props.post.textHTML))
             const aElements = postText.current.querySelectorAll('a')
             if (aElements.length) {
-                console.log(aElements)
                 aElements.forEach((a) => {
-                    console.log(a.href)
-                    console.log(a.innerText)
+                    if (/\w+.(jpg|png)[?]/gi.test(a.href)) {
+                        const newImageElement = document.createElement('img')
+                        newImageElement.src = a.href
+                        a.innerHTML = ''
+                        a.target = '_blank'
+                        a.appendChild(newImageElement)
+                    }
                 })
-            //aElements.forEach((a) => a.innerText = '') // removes innerText of all a elements - needs to be targeted to just .jpg
             }
-
         }
 
         // console.log(props.post.media_metadata['3g94felaomda1'])
