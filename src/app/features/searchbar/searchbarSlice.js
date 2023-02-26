@@ -21,6 +21,7 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
                 url: child.data.url,
                 title: child.data.title,
                 text: child.data.selftext,
+                textHTML: child.data.selftext_html,
                 thumbnail: child.data.thumbnail
             }
         })

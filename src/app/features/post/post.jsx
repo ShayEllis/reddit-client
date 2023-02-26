@@ -1,12 +1,28 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import './post.css'
 import Media from '../media/media'
 import helpers from '../../functions/helper-functions'
 
 const Post = (props) => {
+    const postText = useRef(null)
 
     useEffect(() => {
-        console.log(props.post)
+        //console.log(props.post)
+        //console.log(helpers.adjustRedditPostTextHTML(helpers.convertHTMLCodes(props.post.textHTML)))
+        if (props.post.textHTML) {
+            postText.current.innerHTML = helpers.adjustRedditPostTextHTML(helpers.convertHTMLCodes(props.post.textHTML))
+            const aElements = postText.current.querySelectorAll('a')
+            if (aElements.length) {
+                console.log(aElements)
+                aElements.forEach((a) => {
+                    console.log(a.href)
+                    console.log(a.innerText)
+                })
+            //aElements.forEach((a) => a.innerText = '') // removes innerText of all a elements - needs to be targeted to just .jpg
+            }
+
+        }
+
         // console.log(props.post.media_metadata['3g94felaomda1'])
         // Imgur video - redirect to url - not in media
         // Twitter - embed url link provided in media
@@ -36,7 +52,7 @@ const Post = (props) => {
                 {props.post.title && <h2>{props.post.title}</h2>}
                 {props.post.media && <Media media={props.post.media} url={props.post.url} />}
                 {/* <image src={props.post.media_metadata.3g94felaomda1.p[5]} /> */}
-                {props.post.text && <pre>{props.post.text}</pre>}
+                {props.post.textHTML && <div id='post-text' ref={postText}></div>}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>

@@ -14,9 +14,36 @@ const helpers = {
         }
         return correctedURL
     },
-    addLineBreakToText(text) {
-        return text.replace(/[\n]/gi, '<br>')
+    convertHTMLCodes(text) {
+        if (text) {
+            let convertedText = text
+            const htmlCodeName = {quot: '"', amp: '&', apos: '\'', lt: '<', gt: '>', }
+            const htmlCodesRegex =  /&(#(?:x[0-9a-f]+|\d+)+|[a-z]+);/gi
+            do {
+                convertedText = convertedText.replace(htmlCodesRegex, ($0, $1) => {
+                    if ($1[0] === "#") {
+                        if (/#x(200B|200C|200D|FEFF)/ig.test($1)) {
+                            return ''
+                        } else {
+                            return String.fromCharCode($1[1].toLowerCase() === "x" ? parseInt($1.substr(2), 16) : parseInt($1.substr(1), 10))
+                        }
+                    } else {
+                        return htmlCodeName.hasOwnProperty($1) ? htmlCodeName[$1] : $0
+                    }
+                })
+            } while (htmlCodesRegex.test(convertedText))
+            return convertedText
+        }
+    },
+    adjustRedditPostTextHTML(text) {
+        if (text) {
+            return text.replace(/<!-- (SC_OFF|SC_ON) -->/gi, '').replace(/<p>(?=<a|<\/p>)|(?<=>)<\/p>/gi, '') // Remove SC_OFF and SC_ON and extra <p></p> elements
+        }
+    },
+    displayJpgImages() {
+        
     }
 }
 
 export default helpers
+
