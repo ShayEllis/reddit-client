@@ -2,7 +2,7 @@
 .post-container {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    flex: 0 1 90%;
     min-height: 250px;
     border-radius: 10px;
     background-color: var(--content-bg);

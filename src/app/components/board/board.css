@@ -7,19 +7,18 @@
     justify-content: space-around;
     align-content: flex-start;
     width: 100%;
-    /* min-width: 372px; */
+    min-width: 372px;
     overflow: auto;
 }
 
 /* Board loader */
 #board-loader {
-    display: block;
-    width: 100%;
+    flex: 0 1 90%;
     height: 400px;
     position: relative;
     background-color: var(--content-bg);
     border-radius: 10px;
-  }
+}
 #board-loader::after {
     content: '';
     width: calc(100% - 30px);
@@ -32,12 +31,12 @@
         linear-gradient(var(--hover-bg) 200px, transparent 0),
         linear-gradient(var(--hover-bg) 30px, transparent 0);
     background-repeat: no-repeat;
-    background-size: 75px 375px, 20% 30px, 100% 200px, 70% 30px;
+    background-size: 100px 375px, 20% 30px, 100% 200px, 70% 30px;
     background-position: -150px 0, left 0, center 45px, left 340px;
     animation: boardloader 1s linear infinite;
 }
 @keyframes boardloader {
     to {
-        background-position: 550px 0, left 0, center 45px, left 340px;
+        background-position: calc(100% + 150px) 0, left 0, center 45px, left 340px;
     }
 }
