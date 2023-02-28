@@ -13,6 +13,8 @@ const Media = (props) => {
         if (redditVideoURL) {
             const player = dashjs.MediaPlayer().create()
             player.initialize(mediaRef.current, redditVideoURL, false)
+            mediaRef.current.style.width = `${props.media.reddit_video.width}px`
+            mediaRef.current.style.height = `${props.media.reddit_video.height}px`
          } else if (props.media.type === 'youtube.com') {
             mediaContainerRef.current.innerHTML = youtubeVideo
         } 

@@ -52,9 +52,9 @@ const Post = (props) => {
             </div>
             <div id='post-content'>
                 {props.post.title && <h2>{props.post.title}</h2>}
+                {props.post.textHTML && <div id='post-text' ref={postText}></div>}
                 {props.post.media && <Media media={props.post.media} url={props.post.url} />}
                 {/* <image src={props.post.media_metadata.3g94felaomda1.p[5]} /> */}
-                {props.post.textHTML && <div id='post-text' ref={postText}></div>}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>
