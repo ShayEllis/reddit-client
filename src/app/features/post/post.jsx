@@ -14,11 +14,11 @@ const Post = (props) => {
             const aElements = postText.current.querySelectorAll('a')
             if (aElements.length) {
                 aElements.forEach((a) => {
+                    a.target = '_blank'
                     if (/\w+.(jpg|png)[?]/gi.test(a.href)) {
                         const newImageElement = document.createElement('img')
                         newImageElement.src = a.href
                         a.innerHTML = ''
-                        a.target = '_blank'
                         a.appendChild(newImageElement)
                     }
                 })
