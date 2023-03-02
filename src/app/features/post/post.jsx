@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react'
 import './post.css'
 import Media from '../media/media'
+import ImageGallery from '../imageGallery/imageGallery'
 import helpers from '../../functions/helper-functions'
 
 const Post = (props) => {
     const postText = useRef(null)
 
     useEffect(() => {
-        //console.log(props.post)
-        //console.log(helpers.adjustRedditPostTextHTML(helpers.convertHTMLCodes(props.post.textHTML)))
+        // Show image links
         if (props.post.textHTML) {
             postText.current.innerHTML = helpers.adjustRedditPostTextHTML(helpers.convertHTMLCodes(props.post.textHTML))
             const aElements = postText.current.querySelectorAll('a')
@@ -24,8 +24,16 @@ const Post = (props) => {
                 })
             }
         }
+        // Show embeded images
+            //media_metadata - gallery photos
+        if (props.post.media_metadata) {
+            console.log(props.post.media_metadata)
+        } else if (/\w+.(jpg|png)$/gi.test(props.post.url)) {
+            console.log(props.post.url)
+        }
+            //preview.images *OR* ur - single photo
 
-        // console.log(props.post.media_metadata['3g94felaomda1'])
+
         // Imgur video - redirect to url - not in media
         // Twitter - embed url link provided in media
     }, [])
@@ -54,6 +62,7 @@ const Post = (props) => {
                 {props.post.title && <h2>{props.post.title}</h2>}
                 {props.post.textHTML && <div id='post-text' ref={postText}></div>}
                 {props.post.media && <Media media={props.post.media} url={props.post.url} />}
+                <ImageGallery />
                 {/* <image src={props.post.media_metadata.3g94felaomda1.p[5]} /> */}
             </div>
             <menu id='post-footer'>

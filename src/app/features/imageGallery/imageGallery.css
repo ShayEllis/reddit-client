@@ -1,0 +1,45 @@
+.container {
+    position: relative;
+}
+img {
+    width: 100%;
+}
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+/* Position next and previous buttons */
+#prev, #next {
+    color: var(--main-text);
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 6px;
+    margin-top: -16px;
+    font-size: 16px;
+    border-radius: 5px;
+    user-select: none;
+    background-color: var(--buttons);
+}
+/* Position next button */
+#prev {
+    left: 6px;
+}
+#next {
+    right: 6px;
+}
+#prev:hover, #next:hover {
+    background-color: var(--hover-bg);
+}
+/* Image number */
+.numbertext {
+    color: var(--main-text);
+    font-size: 12px;
+    padding: 4px 8px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background-color: var(--buttons);
+    border-radius: 24px;
+}
