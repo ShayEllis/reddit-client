@@ -40,9 +40,6 @@ const helpers = {
             return text.replace(/<!-- (SC_OFF|SC_ON) -->/gi, '').replace(/<p>(?=<a|<\/p>)|(?<=>)<\/p>/gi, '') // Remove SC_OFF and SC_ON and extra <p></p> elements
         }
     },
-    displayJpgImages() {
-        
-    }
 }
 
 export default helpers

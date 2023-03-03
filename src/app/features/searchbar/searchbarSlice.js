@@ -12,6 +12,7 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
                 author: child.data.author,
                 id: child.data.id,
                 media: child.data.media,
+                is_gallery: child.data.is_gallery,
                 media_metadata: child.data.media_metadata,
                 num_comments: child.data.num_comments,
                 permalink: child.data.permalink,
@@ -25,12 +26,12 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
                 thumbnail: child.data.thumbnail
             }
         })
-
-                localStorage.setItem('searchResponse', JSON.stringify({
-                    after: jsonResponse.data.after,
-                    before: jsonResponse.data.before,
-                    children
-                }))
+        
+        localStorage.setItem('searchResponse', JSON.stringify({
+            after: jsonResponse.data.after,
+            before: jsonResponse.data.before,
+            children
+        }))
         
         return {
             after: jsonResponse.data.after,

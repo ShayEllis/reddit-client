@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { selectChildren, selectStatus } from '../../features/searchbar/searchbarSlice'
 import './board.css'
@@ -15,9 +15,10 @@ const Board = () => {
     return (
         <main id='board-container'>
             {searchStatus === 'fulfilled' 
-                ? searchResults.map((post) => {
-                        return <Post key={post.id} post={post} />
-                    })
+                ? 
+                searchResults.map((post) => {
+                    return <Post key={post.id} post={post} />
+                })
                 :
                 <>
                     <div id='board-loader'></div>

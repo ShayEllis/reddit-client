@@ -6,6 +6,8 @@ import helpers from '../../functions/helper-functions'
 
 const Post = (props) => {
     const postText = useRef(null)
+    const singleImage = /\w+.(jpg|png)$/gi.test(props.post.url) && props.post.url
+    const multipleImages = props.post.media_metadata !== undefined && props.post.is_gallery && props.post.media_metadata
 
     useEffect(() => {
         // Show image links
@@ -24,18 +26,8 @@ const Post = (props) => {
                 })
             }
         }
-        // Show embeded images
-            //media_metadata - gallery photos
-        if (props.post.media_metadata) {
-            console.log(props.post.media_metadata)
-        } else if (/\w+.(jpg|png)$/gi.test(props.post.url)) {
-            console.log(props.post.url)
-        }
-            //preview.images *OR* ur - single photo
-
 
         // Imgur video - redirect to url - not in media
-        // Twitter - embed url link provided in media
     }, [])
 
     return (
@@ -62,8 +54,7 @@ const Post = (props) => {
                 {props.post.title && <h2>{props.post.title}</h2>}
                 {props.post.textHTML && <div id='post-text' ref={postText}></div>}
                 {props.post.media && <Media media={props.post.media} url={props.post.url} />}
-                <ImageGallery />
-                {/* <image src={props.post.media_metadata.3g94felaomda1.p[5]} /> */}
+                {(singleImage || multipleImages) && <ImageGallery images={singleImage || multipleImages} />}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>
