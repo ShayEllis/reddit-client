@@ -5,8 +5,8 @@ import dashjs from 'dashjs'
 
 const Media = (props) => {
     const redditVideoURL = helpers.adjustURL(props.media?.reddit_video?.dash_url)
-    const youtubeVideo = props.media.type === 'youtube.com' && helpers.adjustURL(props.media?.oembed?.html, true)
-    const twitter = props.media.type === 'twitter.com' && props.media?.oembed?.url
+    const youtubeVideo = props.media?.type === 'youtube.com' && helpers.adjustURL(props.media?.oembed?.html, true)
+    const twitter = props.media?.type === 'twitter.com' && props.media?.oembed?.url
     const redditVideoPlayer = useRef(null)
     const youtubeContainer = useRef(null)
 

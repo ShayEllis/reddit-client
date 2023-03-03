@@ -7,6 +7,7 @@ import helpers from '../../functions/helper-functions'
 const Post = (props) => {
     const postText = useRef(null)
     const singleImage = /\w+.(jpg|png)$/gi.test(props.post.url) && props.post.url
+    const imgurLink = /^(http|https):\/\/(i.)?imgur.com/gi.test(props.post.url) && props.post.url
     const multipleImages = props.post.media_metadata !== undefined && props.post.is_gallery && props.post.media_metadata
 
     useEffect(() => {
@@ -54,7 +55,7 @@ const Post = (props) => {
                 {props.post.title && <h2>{props.post.title}</h2>}
                 {props.post.textHTML && <div id='post-text' ref={postText}></div>}
                 {props.post.media && <Media media={props.post.media} url={props.post.url} />}
-                {(singleImage || multipleImages) && <ImageGallery images={singleImage || multipleImages} />}
+                {(singleImage || multipleImages || imgurLink) && <ImageGallery images={singleImage || multipleImages} imgurLink={imgurLink} />}
             </div>
             <menu id='post-footer'>
                 <li className='footer-link comment-button-container'>
