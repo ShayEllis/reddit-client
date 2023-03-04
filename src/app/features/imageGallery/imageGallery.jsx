@@ -1,13 +1,11 @@
 import { useEffect } from 'react'
 import './imageGallery.css'
+import helpers from '../../functions/helper-functions'
 
 const ImageGallery = (props) => {
     const imgurLink = props.imgurLink
     const singleImageLink = typeof props.images === 'string' && props.images
-
-    useEffect(() => {
-
-    }, [])
+    const galleryImages = typeof props.images === 'object' && props.images
 
     return (
         <>
@@ -18,15 +16,32 @@ const ImageGallery = (props) => {
                         {imgurLink && <a href={imgurLink} target="_blank">View on Imgur</a>}
                     </>
                 :
-                <div className="container">
-                    <div className="mySlides" style={{ display: 'block'}}>
-                        <div className="numbertext"><span>1 / 6</span></div>
-                        <a id='img-link' target='_blank'><img src="https://www.w3schools.com/howto/img_woods_wide.jpg" /></a>
+                    <div className="container">
+                        {Object.keys(galleryImages).map((image, index) => {
+                            if (galleryImages[image].e === 'Image') {
+                                const imageId = galleryImages[image].id
+                                const imageSizeArray = galleryImages[image].p
+                                const imageFullSize = galleryImages[image].s
+                                if (imageSizeArray) {
+                                    return (
+                                            <div className="mySlides" key={imageId}>
+                                                <div className="numbertext"><span>{index + 1}</span></div>
+                                                <a id='img-link' target='_blank'><img src={helpers.convertHTMLCodes(imageSizeArray[imageSizeArray.length - 1].u)} /></a>
+                                            </div>                      
+                                    )
+                                } else if (imageFullSize) {
+                                    return (
+                                            <div className="mySlides" key={imageId}>
+                                                <div className="numbertext"><span>{index + 1}</span></div>
+                                                <a id='img-link' target='_blank'><img src={helpers.convertHTMLCodes(imageFullSize.u)} /></a>
+                                            </div>
+                                    )
+                                }
+                            }
+                        })}
+                        <a id="prev"><span>❮</span></a>
+                        <a id="next"><span>❯</span></a>
                     </div>
-                        
-                    <a id="prev"><span>❮</span></a>
-                    <a id="next"><span>❯</span></a>
-                </div>
             }
         </>
     )
