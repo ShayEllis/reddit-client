@@ -12,10 +12,10 @@
     max-width: 700px;
     padding-bottom: 56.25%;
     height: 100%;
-    max-height: 393px;
+    max-height: 394px;
     overflow: hidden;
 }
-@media screen and (min-width: 1020px){
+@media screen and (min-width: 1059px){
     #youtube-container {
         padding-bottom: 394px;
     }

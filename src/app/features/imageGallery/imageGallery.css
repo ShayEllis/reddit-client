@@ -1,15 +1,34 @@
-.container {
+.image-gallery-container {
     position: relative;
-}
-#img-link {
-    padding: 0 !important;
-}
-img {
     width: 100%;
 }
-/* Hide the images by default */
-.mySlides {
-    /* display: none; */
+.image-gallery-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.single-img-link {
+    max-width: max-content;
+}
+.single-img {
+    max-width: 100%;
+}
+#gallery-img-link {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    left:0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.slides-container {
+    position: relative;
+    max-width: 700px;
+    max-height: 65vh;
+    margin: 0 auto;
+}
+.image-gallery-border {
+    border: 1px solid var(--main-text);
 }
 /* Position next and previous buttons */
 #prev, #next {
@@ -18,12 +37,13 @@ img {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    padding: 6px;
-    margin-top: -16px;
+    padding: 8px;
+    margin-top: -18px;
     font-size: 16px;
     border-radius: 5px;
     user-select: none;
     background-color: var(--buttons);
+    border: 1px solid var(--main-text)
 }
 /* Position next button */
 #prev {
@@ -39,11 +59,12 @@ img {
 .numbertext {
     color: var(--main-text);
     font-size: 12px;
-    padding: 2px 6px;
+    padding: 4px 8px;
     position: absolute;
-    top: 6px;
-    left: 6px;
+    top: 8px;
+    left: 8px;
     background-color: var(--buttons);
     border-radius: 24px;
     transition: .5s;
+    border: 1px solid var(--main-text)
 }

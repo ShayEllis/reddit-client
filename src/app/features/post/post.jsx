@@ -8,6 +8,7 @@ const Post = (props) => {
     const postTextContainer = useRef(null)
     const postTextHTML = helpers.adjustRedditPostTextHTML(helpers.convertHTMLCodes(props.post.textHTML))
     const postTitle = helpers.convertHTMLCodes(props.post.title)
+    console.log(props.post.url && props.post)
     const singleImage = /\w+.(jpg|png)$/gi.test(props.post.url) && props.post.url
     const imgurLink = /^(http|https):\/\/(i.)?imgur.com/gi.test(props.post.url) && props.post.url
     const multipleImages = props.post.media_metadata !== undefined && props.post.is_gallery && props.post.media_metadata
@@ -25,6 +26,7 @@ const Post = (props) => {
                         newImageElement.src = a.href
                         a.innerHTML = ''
                         a.appendChild(newImageElement)
+                        a.classList.add('post-img-link')
                     }
                 })
             }

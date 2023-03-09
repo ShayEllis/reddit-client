@@ -2,9 +2,15 @@
 .post-container {
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
     flex: 0 1 90%;
     border-radius: 10px;
     background-color: var(--content-bg);
+}
+@media screen and (min-width: 575px) {
+    .post-container {
+        flex: 0 1 70%;
+    }
 }
 .post-container a {
     color: var(--title-text);
@@ -72,13 +78,16 @@
 }
 #post-content a:has(img) {
     display: block;
-    width: fit-content;
     margin: 0 auto;
     padding: 5px;
 }
+.post-img-link {
+    max-width: max-content;
+}
 #post-content img {
     display: block;
-    max-width: 100%;
+    max-width: 700px;
+    max-height: 60vh; 
 }
 #post-text p {
     margin: 1lh 0;
