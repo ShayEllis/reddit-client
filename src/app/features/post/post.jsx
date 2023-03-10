@@ -31,8 +31,6 @@ const Post = (props) => {
                 })
             }
         }
-
-        // Imgur video - redirect to url - not in media
     }, [])
 
     return (
