@@ -81,20 +81,24 @@
     margin: 0 auto;
     padding: 5px;
 }
-.post-img-link {
-    max-width: max-content;
+#post-img-container {
+    max-width: 700px;
+    max-height: 60vh;
 }
 #post-content img {
     display: block;
-    max-width: 700px;
-    max-height: 60vh; 
+    max-width: 100%;
+    max-height: 60vh;
+
+}
+.post-img-link {
+    width:fit-content;
 }
 #post-text p {
     margin: 1lh 0;
 }
 #post-text a {
     word-break: break-all;
-    width: 100%;
 }
 #post-text div p:last-child{
     margin-bottom: 0;

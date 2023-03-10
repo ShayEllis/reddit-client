@@ -22,10 +22,13 @@ const Post = (props) => {
                 aElements.forEach((a) => {
                     a.target = '_blank'
                     if (/\w+.(jpg|png)[?]/gi.test(a.href)) {
+                        const imageContainer = document.createElement('div')
+                        imageContainer.id = 'post-img-container'
                         const newImageElement = document.createElement('img')
                         newImageElement.src = a.href
                         a.innerHTML = ''
-                        a.appendChild(newImageElement)
+                        imageContainer.appendChild(newImageElement)
+                        a.appendChild(imageContainer)
                         a.classList.add('post-img-link')
                     }
                 })

@@ -28,7 +28,7 @@ const ImageGallery = (props) => {
                         const height = imageSizeArray[imageSizeArray.length - 1].y
                         if (aspectRatio.height / aspectRatio.width < height / width) { aspectRatio = {width, height} }
                         return (
-                            <a id='gallery-img-link' target='_blank' href={imageUrl} ><img key={imageId} src={imageUrl} /></a>
+                            <a id='gallery-img-link' target='_blank' href={imageUrl}><img key={imageId} src={imageUrl} /></a>
                         )
                     } else if (imageFullSize) {
                         const imageUrl = helpers.convertHTMLCodes(imageFullSize.u)
@@ -36,7 +36,7 @@ const ImageGallery = (props) => {
                         const height = imageFullSize.u.y
                         if (aspectRatio.height / aspectRatio.width < height / width) { aspectRatio = {width, height} }
                         return (
-                            <a id='gallery-img-link' target='_blank' href={imageUrl} ><img key={imageId} src={imageUrl} /></a>
+                            <a id='gallery-img-link' target='_blank' href={imageUrl}><img key={imageId} src={imageUrl} /></a>
                         )
                     }
                 }
