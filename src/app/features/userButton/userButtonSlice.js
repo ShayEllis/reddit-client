@@ -52,7 +52,7 @@ const selectIconImgURL = (state) => state.userButton.iconImgURL
 const selectName = (state) => state.userButton.name
 const selectStatus = (state) => state.userButton.status
 
-const selectUserInfo = createSelector([selectIconImgURL, selectName, selectStatus], (iconImgURL, name) => {
+const selectUserInfo = createSelector([selectIconImgURL, selectName], (iconImgURL, name) => {
     const correctedIconImgURL = helpers.adjustURL(iconImgURL)
     return {
         correctedIconImgURL,

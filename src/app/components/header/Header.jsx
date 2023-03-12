@@ -1,4 +1,4 @@
-import Searchbar from '../../features/searchbar/Searchbar'
+import Searchbar from '../../features/searchbar/searchbar'
 import UserButton from '../../features/userButton/userButton'
 import './header.css'
 

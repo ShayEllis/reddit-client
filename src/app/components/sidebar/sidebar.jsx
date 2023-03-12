@@ -1,6 +1,11 @@
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { selectChartValue } from '../../features/searchbar/searchbarSlice'
 import './sidebar.css'
 
 const Sidebar = () => {
+    const chartValue = useSelector(selectChartValue)
+
     const handleSidebarButtonClick = () => {
         const sidebarButtonClassList = document.getElementById('open-close-sidebar').classList
         const sidebarConatinerClassList = document.getElementById('sidebar').classList
@@ -30,35 +35,11 @@ const Sidebar = () => {
                 </svg>            
             </button>
             <ul id='sidebar-list-container'>
-                <li><a className='sidebar-item'>Best</a></li>
-                <li><a className='sidebar-item'>Hot</a></li> {/* Generate these with reddit API */}
-                <li><a className='sidebar-item'>New</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>New</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>New</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
-                <li><a className='sidebar-item'>Top</a></li>
+                <li><Link to={{ pathname: '/app', search: '?chart=best'}} className={chartValue === 'best' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>Best</Link></li>
+                <li><Link to={{ pathname: '/app', search: '?chart=hot'}} className={chartValue === 'hot' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>Hot</Link></li>
+                <li><Link to={{ pathname: '/app', search: '?chart=new'}} className={chartValue === 'new' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>New</Link></li>
+                <li><Link to={{ pathname: '/app', search: '?chart=top'}} className={chartValue === 'top' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>Top</Link></li>
+                <li><Link to={{ pathname: '/app', search: '?chart=rising'}} className={chartValue === 'rising' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>Rising</Link></li>
             </ul>
         </aside>
     )

@@ -31,4 +31,3 @@ const Media = (props) => {
 }
 
 export default Media
-

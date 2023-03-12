@@ -79,8 +79,13 @@
     background-color:var(--buttons);
     border: 1px solid black;
     overflow: hidden;
+    text-decoration: none;
 }
 .sidebar-item:hover {
     background-color: var(--hover-bg);
     cursor: pointer;
+}
+.sidebar-item-selected {
+    border: 1px solid var(--title-text);
+    color: var(--title-text);
 }

@@ -1,6 +1,5 @@
-import { useEffect } from 'react'
 import { Form } from 'react-router-dom'
-import { changeSearchValue, searchReddit, selectBefore, selectAfter, selectSearchValue } from './searchbarSlice'
+import { changeSearchValue, selectSearchValue } from './searchbarSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import './searchbar.css'
 

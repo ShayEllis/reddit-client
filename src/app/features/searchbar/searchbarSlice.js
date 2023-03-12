@@ -1,12 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const searchReddit = createAsyncThunk('searchbar/searchReddit',
-    async ({searchStr, sort = 'relevance'}) => { //Options for sort (relevance, hot, top, new, comments)
+    async ({searchStr = null, chart = null, sort = 'relevance', after = null}, thunkAPI) => { //Options for sort (relevance, hot, top, new, comments), Options for chart (best, hot, new, top, rising)
         const redditToken = localStorage.getItem('redditToken')
-        const response = await fetch(`https://oauth.reddit.com/search?limit=10&sort=${sort}&q=${searchStr}`, { headers: { 'authorization': `bearer ${redditToken}`} })
+        let response = null
+
+        if (searchStr && thunkAPI.getState().searchbar.submittedSearchValue !== searchStr) {
+            response = await fetch(`https://oauth.reddit.com/search?limit=10&sort=${sort}&after=${after}&q=${searchStr}`, { headers: { 'authorization': `bearer ${redditToken}`} })
+        } else {
+            if (!searchStr && thunkAPI.getState().searchbar.chartValue !== chart) {
+                response = await fetch(`https://oauth.reddit.com/${chart}?limit=10&after=${after}`, { headers: { 'authorization': `bearer ${redditToken}`} })
+            } else {
+                return { children: thunkAPI.getState().searchbar.children }
+            }
+        }
+
         const jsonResponse = await response.json()
 
-        console.log(jsonResponse)
+        const responseAfter = jsonResponse.data.after
+        const responseBefore = jsonResponse.data.before
         const children = jsonResponse.data.children.map((child) => { 
             return {
                 author: child.data.author,
@@ -27,15 +39,9 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
             }
         })
         
-        localStorage.setItem('searchResponse', JSON.stringify({
-            after: jsonResponse.data.after,
-            before: jsonResponse.data.before,
-            children
-        }))
-        
         return {
-            after: jsonResponse.data.after,
-            before: jsonResponse.data.before,
+            responseAfter,
+            responseBefore,
             children
         }
     }     
@@ -44,8 +50,10 @@ const searchReddit = createAsyncThunk('searchbar/searchReddit',
 )
 const initialState = {
     searchValue: '',
-    after: '',
-    before: '',
+    submittedSearchValue: '',
+    chartValue: '',
+    after: [],
+    before: [],
     children: [],
     status: 'pending',
     error: null
@@ -57,6 +65,12 @@ const searchbarSlice = createSlice({
     reducers: {
         changeSearchValue(state, action) {
             state.searchValue = action.payload
+        },
+        changeSubmittedSearchValue(state, action) {
+            state.submittedSearchValue = action.payload
+        },
+        changeChartValue(state, action) {
+            state.chartValue = action.payload
         }
     },
     extraReducers(builder) {
@@ -65,11 +79,11 @@ const searchbarSlice = createSlice({
                 state.status = 'pending'
             })
             .addCase(searchReddit.fulfilled, (state, action) => {
-                if (state.after !== action.payload.after) {
+                if (state.after !== action.payload.responseAfter) {
                     state.children = action.payload.children
                 }
-                state.after = action.payload.after
-                state.before = action.payload.before
+                state.after.indexOf(action.payload.responseAfter) === -1 && state.after.push(action.payload.responseAfter)
+                state.before.indexOf(action.payload.responseBefore) === -1 && state.before.push(action.payload.responseBefore)
                 state.status = 'fulfilled'
             })
             .addCase(searchReddit.rejected, (state, action) => {
@@ -84,8 +98,9 @@ const selectBefore = (state) => state.searchbar.before
 const selectChildren = (state) => state.searchbar.children
 const selectSearchValue = (state) => state.searchbar.searchValue
 const selectStatus = (state) => state.searchbar.status
+const selectChartValue = (state) => state.searchbar.chartValue
 
-export { selectAfter, selectBefore, selectChildren, selectSearchValue, selectStatus }
+export { selectAfter, selectBefore, selectChildren, selectSearchValue, selectStatus, selectChartValue }
 export { searchReddit }
-export const { changeSearchValue } = searchbarSlice.actions
+export const { changeSearchValue, changeSubmittedSearchValue, changeChartValue } = searchbarSlice.actions
 export default searchbarSlice.reducer

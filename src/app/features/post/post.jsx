@@ -4,11 +4,18 @@ import Media from '../media/media'
 import ImageGallery from '../imageGallery/imageGallery'
 import helpers from '../../functions/helper-functions'
 
+/*
+- when new search is submitted scroll to top of board
+- fixed post size with overflow hidden, can click see more to expand and view all post content?
+- 10 posts load at a time, with load more button at bottom of page. when clicked 10 more posts load
+- when comment button is clicked, redirect to reddit website
+- change r/ font size
+*/
+
 const Post = (props) => {
     const postTextContainer = useRef(null)
     const postTextHTML = helpers.adjustRedditPostTextHTML(helpers.convertHTMLCodes(props.post.textHTML))
     const postTitle = helpers.convertHTMLCodes(props.post.title)
-    console.log(props.post.url && props.post)
     const singleImage = /\w+.(jpg|png)$/gi.test(props.post.url) && props.post.url
     const imgurLink = /^(http|https):\/\/(i.)?imgur.com/gi.test(props.post.url) && props.post.url
     const multipleImages = props.post.media_metadata !== undefined && props.post.is_gallery && props.post.media_metadata
