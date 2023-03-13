@@ -29,7 +29,7 @@
 }
 
 /* loading gradient animation */
-#loader {
+#loader, #more-loader {
     transform: rotateZ(45deg);
     display: inline-block;
     vertical-align: middle;
@@ -39,7 +39,7 @@
     height: 38px;
     color: var(--title-text);
 }
-#loader:before, #loader:after {
+#loader:before, #loader:after, #more-loader:before, #more-loader:after {
     content: '';
     display: block;
     position: absolute;
@@ -49,7 +49,7 @@
     transform: rotateX(70deg);
     animation: 1s spin linear infinite;
 }
-#loader:after {
+#loader:after, #more-loader:after {
     color: var(--title-text);
     transform: rotateY(70deg) rotateZ(180deg);
 }

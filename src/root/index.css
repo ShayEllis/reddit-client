@@ -1,6 +1,7 @@
 /* Use border-box model */
 *, *::before, *::after {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 #root {
     display: flex;

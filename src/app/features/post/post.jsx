@@ -5,11 +5,8 @@ import ImageGallery from '../imageGallery/imageGallery'
 import helpers from '../../functions/helper-functions'
 
 /*
-- when new search is submitted scroll to top of board
 - fixed post size with overflow hidden, can click see more to expand and view all post content?
-- 10 posts load at a time, with load more button at bottom of page. when clicked 10 more posts load
 - when comment button is clicked, redirect to reddit website
-- change r/ font size
 */
 
 const Post = (props) => {
