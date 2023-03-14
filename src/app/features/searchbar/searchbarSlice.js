@@ -9,6 +9,7 @@ const fetchRedditPosts = async ({searchStr = null, chart = 'best', sort = 'relev
         await fetch(`https://oauth.reddit.com/${chart}?limit=10&after=${after}`, { headers: { 'authorization': `bearer ${redditToken}`} })
 
     const jsonResponse = await response.json()
+    console.log(jsonResponse)
 
     const responseAfter = jsonResponse.data.after
     const responseBefore = jsonResponse.data.before

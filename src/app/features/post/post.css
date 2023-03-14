@@ -15,6 +15,7 @@
 }
 .post-container a {
     color: var(--title-text);
+    text-decoration: none;
 }
 .post-container a:hover {
     background-color: var(--hover-bg);
