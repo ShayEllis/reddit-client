@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-const fetchRedditPosts = async ({searchStr = null, chart = 'best', sort = 'relevance', after = null}, thunkAPI) => { //Options for sort (relevance, hot, top, new, comments), Options for chart (best, hot, new, top, rising)
+const fetchRedditPosts = async ({searchStr = null, chart = 'hot', sort = 'relevance', after = null}, thunkAPI) => { //Options for sort (relevance, hot, top, new, comments), Options for chart (best, hot, new, top, rising)
     const redditToken = localStorage.getItem('redditToken')
 
     let response = searchStr ?
@@ -9,7 +9,6 @@ const fetchRedditPosts = async ({searchStr = null, chart = 'best', sort = 'relev
         await fetch(`https://oauth.reddit.com/${chart}?limit=10&after=${after}`, { headers: { 'authorization': `bearer ${redditToken}`} })
 
     const jsonResponse = await response.json()
-    console.log(jsonResponse)
 
     const responseAfter = jsonResponse.data.after
     const responseBefore = jsonResponse.data.before

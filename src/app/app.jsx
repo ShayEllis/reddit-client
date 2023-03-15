@@ -25,7 +25,7 @@ const appLoader = ({ request }) => {
           store.dispatch(changeSearchValue(search))
       }
   } else if (!chart) {
-      return redirect('/app?chart=best')
+      return redirect('/app?chart=hot')
   } else {
       if (chartValue !== chart) {
           store.dispatch(changeSubmittedSearchValue(''))

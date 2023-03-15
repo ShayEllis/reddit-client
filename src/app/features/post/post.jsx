@@ -14,7 +14,6 @@ const Post = (props) => {
     const imgurLink = /^(http|https):\/\/(i.)?imgur.com/gi.test(props.post.url) && props.post.url
     const multipleImages = props.post.media_metadata !== undefined && props.post.is_gallery && props.post.media_metadata
     const permalink = props.post.permalink
-    console.log(permalink)
 
     useEffect(() => {
         // Show image links
