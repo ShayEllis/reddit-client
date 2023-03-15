@@ -1,4 +1,4 @@
-import App, { appLoader } from '../app/App'
+import App, { appLoader } from '../app/app'
 import Error from '../app/components/error/error'
 import Login from '../app/features/login/login'
 
