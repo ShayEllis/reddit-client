@@ -1,4 +1,4 @@
-import Header from './components/header/header.jsx'
+import Header from './components/header/header'
 import Sidebar from './components/sidebar/sidebar'
 import Board from './components/board/board'
 import { redirect } from 'react-router-dom'
