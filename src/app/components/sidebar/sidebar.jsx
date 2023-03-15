@@ -38,7 +38,6 @@ const Sidebar = () => {
                 <li><Link to={{ pathname: '/app', search: '?chart=hot'}} className={chartValue === 'hot' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>Hot</Link></li>
                 <li><Link to={{ pathname: '/app', search: '?chart=new'}} className={chartValue === 'new' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>New</Link></li>
                 <li><Link to={{ pathname: '/app', search: '?chart=top'}} className={chartValue === 'top' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>Top</Link></li>
-                <li><Link to={{ pathname: '/app', search: '?chart=random'}} className={chartValue === 'random' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>Random</Link></li>
                 <li><Link to={{ pathname: '/app', search: '?chart=rising'}} className={chartValue === 'rising' ? 'sidebar-item sidebar-item-selected' : 'sidebar-item'}>Rising</Link></li>
             </ul>
         </aside>
