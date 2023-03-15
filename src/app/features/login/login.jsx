@@ -48,7 +48,7 @@ const Login = () => {
         <section id='login-page'>
             <h2>Login</h2>
             {loginStatus && <p>{loginStatus}</p>}
-            {loginStatus && <button onClick={handleButtonClick}>Try Again</button>}
+            {loginStatus && <a onClick={handleButtonClick}>Try Again</a>}
         </section>
     )
 }
