@@ -2,7 +2,7 @@ import { nanoid } from "nanoid"
 
 const clientID = 'NwU4MAp6UlxU0M61jZvUow'
 const clientSecret = '2tfRMh1Hk7tDLL-GsxzroSXbNpBkZQ'
-const redirectURI = 'https://sae-reddit-client-project.netlify.app/'
+const redirectURI = 'https://sae-reddit-client-project.netlify.app'
 
 const redditAPI = {
     generateAuthorizationURI() {
