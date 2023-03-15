@@ -16,4 +16,5 @@
 }
 #login-page a:hover {
     background-color: var(--hover-bg);
+    cursor: pointer;
 }
