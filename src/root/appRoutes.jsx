@@ -9,7 +9,7 @@ const appRoutes = [
         errorElement: <Error />,
     },
     {
-        path: 'app',
+        path: '/app',
         element: <App />,
         loader: appLoader,
     },
