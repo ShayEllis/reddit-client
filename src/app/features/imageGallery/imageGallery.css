@@ -23,7 +23,6 @@
 }
 .slides-container {
     position: relative;
-    max-width: 700px;
     max-height: 65vh;
     margin: 0 auto;
 }
