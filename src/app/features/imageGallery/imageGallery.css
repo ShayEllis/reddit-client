@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
 }
-.image-gallery-container img {
+#gallery-img-link img {
     display: block;
     width: 100%;
     height: auto;
