@@ -37,7 +37,7 @@ const helpers = {
     },
     adjustRedditPostTextHTML(text) {
         if (text) {
-            return text.replace(/<!-- (SC_OFF|SC_ON) -->/gi, '').replace(/<p>(?=<a|<\/p>)|(?<=>)<\/p>/gi, '') // Remove SC_OFF and SC_ON and extra <p></p> elements
+            return text.replace(/<!-- (SC_OFF|SC_ON) -->/gi, '').replace(/<p><\/p>|<p>(<.+?>)<\/p>/gi, '$1')
         }
     },
 }
