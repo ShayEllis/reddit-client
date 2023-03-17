@@ -1,5 +1,4 @@
 Client for Reddit - Practice Project
-
 ===
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9091da31-d1f0-4be4-95cd-3b3e94341d1e/deploy-status)](https://app.netlify.com/sites/sae-reddit-client-project/deploys)
@@ -13,8 +12,8 @@ I created this single page app to use the technologies covered in the first half
 
 ## Technologies
 
-| Technologie           | Version  |
-------------------------------------
+| Name                  | Version  |
+| --------------------- | -------- |
 | Vite React            | v4.0.4   |
 | React                 | v18.0.26 |
 | React Redux           | v8.0.5   |
