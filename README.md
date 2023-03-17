@@ -29,7 +29,7 @@ I created this single page app to use the technologies covered in the first half
 
 ## Setup
 
-This project is hosted on **[Netlify](https://sae-reddit-client-project.netlify.app "Client for Reddit")
+This project is hosted on **[Netlify](https://sae-reddit-client-project.netlify.app "Client for Reddit")**
 
 ## Features
 
